@@ -1,0 +1,1071 @@
+/* Import Roboto Slab font family */
+
+/* Apply Roboto Slab to entire website */
+* {
+    font-family: 'Roboto Slab', serif !important;
+}
+@media (min-width: 992px) { .mission-statement { 
+max-width: 70%;
+} }
+
+.mission-statement .vision {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+}
+
+.mission-statement .mission-card {
+    max-width: 400px;
+}
+
+@media (min-width: 1200px) {
+    .mission-statement .globe-area {
+        height: 400px;
+    }
+}
+
+.mission-statement h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+p, a, span, div, li, button, input, textarea, select {
+    font-family: 'Roboto Slab', serif !important;
+}
+
+/* DO NOT override icon fonts — ensure icon webfonts render correctly */
+.fa,
+.fa::before,
+.fa::after,
+[class^="fa-"],
+[class*=" fa-"],
+.glyphicon,
+.glyphicon::before,
+.glyphicon::after {
+    font-family: 'FontAwesome' !important; /* for FA icons */
+    font-weight: normal !important;
+}
+
+/* Explicitly set Glyphicons family where Bootstrap uses it */
+.glyphicon { font-family: 'Glyphicons Halflings' !important; }
+
+/* Custom CSS to fix header and banner spacing */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide slider navigation bullets and arrows */
+.tp-bullets,
+.tparrows {
+    display: none !important;
+}
+
+#main {
+    margin-top: 50px !important; /* Match the header height */
+}
+
+/* Reset any default margins/paddings */
+.banner-section,
+.banner-cta-strip,
+.rev_slider_wrapper,
+.rev_slider,
+.slider {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure header has no bottom margin */
+.header-bar,
+.fixed-topbar,
+#header {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Make sure the banner starts right after the header */
+.rev_slider_wrapper.banner-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Reset any container padding that might be adding space */
+.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Ensure the banner content starts at the top */
+.banner-cta-strip .container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* CTA Strip Styles - Make it broader */
+.banner-cta-strip {
+    background: #e47566; 
+    padding: 0;
+    margin: 0;
+    color: #ffffff; /* Ensure text defaults to white */
+}
+
+.cta-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.cta-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* tighter spacing */
+    padding: 16px 20px; /* reduce vertical padding */
+    background: transparent;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.4s ease;
+    text-align: center;
+}
+
+.cta-section:last-child {
+    border-right: none;
+}
+
+.cta-section:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.cta-icon {
+    width: 44px;   /* smaller icon */
+    height: 44px;  /* smaller icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* no halo */
+    border-radius: 50%;
+    color: #ffffff; /* white icons */
+    transition: all 0.4s ease;
+}
+
+.cta-section:hover .cta-icon {
+    background: transparent;
+    transform: scale(1.05);
+    box-shadow: none;
+}
+
+.cta-content {
+    flex: 1;
+}
+
+.cta-title {
+    font-size: 16px; 
+    font-weight: 600;
+    color: #000000; 
+    margin-bottom: 12px; 
+    line-height: 1.4;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-link {
+    color: #ffffff; 
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.cta-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ffff00; /* yellow underline on hover */
+    transition: width 0.3s ease;
+}
+
+.cta-link:hover::after { width: 100%; }
+
+.cta-link:hover {
+    color: #ffff00; /* yellow */
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.cta-link .arrow {
+    margin-left: 8px;
+    transition: margin-left 0.3s ease;
+    font-size: 16px;
+}
+
+.cta-link:hover .arrow {
+    margin-left: 14px;
+}
+
+/* Responsive for CTA sections */
+@media (max-width: 991px) {
+    .cta-sections {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .cta-section {
+        padding: 24px 20px; /* smaller on tablet/mobile */
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .cta-section:last-child {
+        border-bottom: none;
+    }
+}
+
+/* About Section Styles */
+.about-section {
+    background: #85ced2;
+    color: rgb(40, 165, 211);
+    padding: 0px 0;
+    overflow: hidden;
+}
+
+.about-content {
+    padding: 40px 40px 40px 80px; /* Added more left padding to move content away from social icons */
+    position: relative;
+    z-index: 1;
+}
+
+.content-divider {
+    width: 60px;
+    height: 4px;
+    background: #f4b000;
+    margin-bottom: 30px;
+}
+
+.about-title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #f4b000;
+    margin-bottom: 25px;
+    line-height: 1.3;
+}
+
+.about-text {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}
+
+.learn-more-btn {
+    color: #dfd0a2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.learn-more-btn:hover {
+    color: #87847d;
+    text-decoration: none;
+}
+
+.learn-more-btn .arrow {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.learn-more-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+.about-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.landscape-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.landscape-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.landscape-image:hover img {
+    transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .about-section {
+        padding: 60px 0;
+    }
+    
+    .about-content {
+        padding: 24px 24px 40px; /* tighter on tablet */
+        text-align: center;
+    }
+    
+    .about-title {
+        font-size: 30px;
+    }
+    
+    .about-text {
+        font-size: 16px;
+    }
+}
+
+/* About Section: Mobile refinements */
+@media (max-width: 767.98px) {
+    /* restore some side padding for readability on mobile */
+    .about-section .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .about-section {
+        padding: 40px 0;
+    }
+
+    .about-content {
+        padding: 16px 12px 24px;
+        text-align: center;
+    }
+
+    .about-title {
+        font-size: 26px;
+        margin-bottom: 16px;
+    }
+
+    .about-text {
+        font-size: 15px;
+        margin-bottom: 18px;
+    }
+
+    .content-divider {
+        margin: 0 auto 16px;
+    }
+
+    .about-image {
+        padding: 10px 0;
+    }
+
+    .landscape-image {
+        border-radius: 6px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .about-title { font-size: 24px; }
+    .about-text { font-size: 14px; }
+}
+
+/* Map and Numbers Section */
+.map-numbers-section {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #8b9b6d;
+}
+
+/* Statistics at the top */
+.stats-top-section {
+    position: relative;
+    z-index: 2;
+    padding: 60px 0 40px 0;
+}
+
+/* Impact Quote Header */
+.impact-quote {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #ffffff;
+    font-style: normal;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+}
+
+.impact-subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.stat-top-item {
+    padding: 20px;
+    position: relative;
+}
+
+/* Category label above numbers */
+.stat-category {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+}
+
+/* Vertical divider between stats */
+.stat-with-divider::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.stat-top-number {
+    font-size: 6rem;
+    font-weight: 300;
+    color: #ffffff;
+    margin-bottom: 15px;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.stat-top-label {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.5;
+}
+
+/* Map container - full width */
+.map-container-full {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    padding: 40px 0 60px 0;
+    z-index: 2;
+}
+
+/* India Map - centered */
+.india-map-full {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.india-map-full svg {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+}
+
+/* State styles - Default gray for all states */
+.map-svg-india path {
+    fill: #e8e8e8 !important;
+    stroke: #ffffff;
+    stroke-width: 1;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.map-svg-india path:hover {
+    fill: #b0b0b0 !important; 
+    stroke: #ffffff;
+    stroke-width: 1.5;
+}
+
+/* Highlighted states where Third Planet Foundation works */
+.state-mh-class path,  /* Maharashtra */
+.state-tn-class path,  /* Tamil Nadu */
+.state-ka-class path,  /* Karnataka */
+.state-hr-class path,  /* Haryana */
+.state-mp-class path,  /* Madhya Pradesh */
+.state-rj-class path,  /* Rajasthan */
+.state-up-class path,  /* Uttar Pradesh */
+.state-wb-class path,  /* West Bengal */
+.state-ap-class path,  /* Andhra Pradesh */
+.state-gj-class path,  /* Gujarat */
+.state-tg-class path,  /* Telangana */
+.state-jh-class path,  /* Jharkhand */
+.state-cg-class path,  /* Chhattisgarh */
+.state-pb-class path,  /* Punjab */
+.state-br-class path,  /* Bihar */
+.state-or-class path,  /* Odisha */
+.state-ml-class path   /* Meghalaya */
+{
+    fill: #698b71 !important;
+    stroke: #ffffff;
+    stroke-width: 1.5;
+}
+
+.state-mh-class path:hover,
+.state-tn-class path:hover,
+.state-ka-class path:hover,
+.state-hr-class path:hover,
+.state-mp-class path:hover,
+.state-rj-class path:hover,
+.state-up-class path:hover,
+.state-wb-class path:hover,
+.state-ap-class path:hover,
+.state-gj-class path:hover,
+.state-tg-class path:hover,
+.state-jh-class path:hover,
+.state-cg-class path:hover,
+.state-pb-class path:hover,
+.state-br-class path:hover,
+.state-or-class path:hover,
+.state-ml-class path:hover
+{
+    fill: #53785b !important;
+    stroke: #ffffff;
+    stroke-width: 2;
+}
+
+.map-svg-india text {
+    fill: #666666;
+    font-size: 10px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .stat-top-number {
+        font-size: 3rem;
+    }
+    
+    .stat-top-label {
+        font-size: 0.75rem;
+    }
+    
+    .india-map-full svg {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .stats-top-section {
+        padding: 40px 0 20px 0;
+    }
+    
+    .stat-top-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-top-label {
+        font-size: 0.7rem;
+    }
+    
+    .india-map-full svg {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .map-container {
+        height: 500px;
+    }
+    
+    .india-map-overlay {
+        padding: 20px;
+    }
+    
+    .india-map-overlay svg {
+        max-width: 300px;
+        max-height: 70%;
+    }
+}
+
+/* Content overlay */
+.map-container > .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Stats Panel */
+.stats-panel {
+    background: rgba(26, 26, 26, 0.9);
+    padding: 4rem 3rem;
+    height: 100%;
+    position: relative;
+    z-index: 3;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    padding-bottom: 15px;
+    margin-top: 0;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #000000;
+}
+
+.stats-list {
+    margin-top: 20px;
+}
+
+.stat-item {
+    margin-bottom: 30px;
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #130d00;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-divider {
+    width: 40px;
+    height: 2px;
+    background-color: #010100;
+    margin: 10px 0;
+}
+
+.stat-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.3s; }
+.stat-item:nth-child(3) { animation-delay: 0.5s; }
+.stat-item:nth-child(4) { animation-delay: 0.7s; }
+
+/* Stats List */
+.stats-list {
+    margin-top: 2rem;
+}
+
+.stat-item {
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: fadeInRight 0.6s ease-out forwards;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #130d00;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-divider {
+    width: 40px;
+    height: 2px;
+    background-color: #010100;
+    margin: 1rem 0;
+}
+
+.stat-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Animation */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) {
+    .stats-panel {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .map-container {
+        height: 650px;
+    }
+    
+    .stats-panel {
+        margin: 2rem;
+        background: rgba(26, 26, 26, 0.95);
+        padding: 3rem 2rem;
+    }
+    
+    .section-title {
+        text-align: center;
+    }
+    
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-divider {
+        margin: 10px auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .map-container {
+        height: 400px;
+    }
+    
+    .stats-panel {
+        margin: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.875rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .map-numbers-section .p-5 {
+        padding: 2rem 1.5rem !important;
+    }
+}
+
+/* Stories Page Styles */
+.stories-hero {
+    background: #f7f5f2;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.stories-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #2e2e2e;
+    margin: 0 0 6px;
+    line-height: 1.25;
+}
+
+.stories-subtitle {
+    font-size: 16px;
+    color: #6e6e6e;
+    margin: 0 0 12px;
+}
+
+.tagline-badge {
+    display: inline-block;
+    background: #cfa27f; /* theme tan */
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.stories-section {
+    padding: 40px 0 30px;
+}
+
+.stories-section.alt {
+    background: #faf8f5;
+}
+
+.stories-section .section-heading {
+    font-size: 30px;
+    font-weight: 700;
+    color: #cfa27f; /* theme tan */
+    text-align: left;
+    margin: 6px 0 6px;
+    line-height: 1.2;
+    position: relative;
+}
+
+.stories-section .section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #f4b000; /* theme accent */
+    margin: 10px auto 14px;
+}
+
+.stories-section .section-intro {
+    text-align: center;
+    color: #6b6b6b;
+    font-size: 16px;
+    margin-bottom: 26px;
+}
+
+/* Minor polish for story cards so headings feel balanced */
+.story-card .story-title {
+    color: #cfa27f;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.35;
+}
+
+  .story-card .story-image img {
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+  
+  @media (max-width: 767.98px) {
+    .stories-title { font-size: 26px; }
+    .stories-section .section-heading { font-size: 24px; }
+  }
+
+/* Dropdown submenu font sizing override (applies to ABOUT and all other dropdowns) */
+.header-nav-area .dropdown-menu li a {
+  font-size: 11px !important; 
+  line-height: 1.6 !important;
+  letter-spacing: 0.3px;
+}
+
+/* ===== Our Mission section ===== */
+.mission-section {
+  position: relative;
+  /* remove vignette background */
+  background: transparent;
+}
+/* Restore safe inner padding for this section only */
+.mission-section .container { padding-left: 15px !important; padding-right: 15px !important; }
+
+/* Align the two columns nicely */
+.mission-vision-grid { display: flex; align-items: center; }
+@media (max-width: 991.98px) { .mission-vision-grid { display: block; } }
+/* Provide inner gutters so content breathes even if global container gutters are removed */
+@media (min-width: 992px) {
+  .mission-vision-grid .col-md-6 { padding-left: 24px; padding-right: 24px; }
+}
+/* Decorative slim gradient rail on the left text column */
+.mission-vision-grid .col-md-6 { position: relative; }
+@media (min-width: 992px) {
+  .mission-vision-grid .col-md-6:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    background: linear-gradient(180deg, #00a8a8, #3F7c2e);
+    border-radius: 2px;
+    opacity: 0.9;
+  }
+  /* add a bit more gutter so text doesn't crowd the rail */
+  .mission-vision-grid .col-md-6:first-child { padding-left: 36px; }
+}
+
+/* Headings styling for this section */
+.theme-hero-heading,
+.vision-title,
+.mission-title { color: #00271359; font-weight: 600; line-height: 1.25; }
+@media (min-width: 992px) { .theme-hero-heading { font-size: 34px; } }
+@media (max-width: 991.98px) { .theme-hero-heading { font-size: 28px; } }
+/* Eye-catching gradient text for Vision & Mission headings (with fallback color above) */
+.mission-section .vision-title,
+.mission-section .mission-title {
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
+  color: #000000;           
+  font-weight: 400;            
+}
+/* Sequential numeric badges before headings */
+.mission-section { counter-reset: missionSteps; }
+
+.mission-section .vision-title::before,
+.mission-section .mission-title::before {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a8a8 0%, #3F7c2e 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  -webkit-text-fill-color: initial; /* ensure number shows as white */
+  vertical-align: middle;
+  position: relative;
+  top: -2px; /* nudge for baseline alignment with heading text */
+}
+.sdg-cube-side {
+    position: relative;
+    min-height: 440px;
+    /* Cube image and shadow variables */
+    --cube-w: 130%;
+    --cube-right: 20%; /* Distance from right edge for cube */
+    --shadow-w: 50%;  /* Optimal width for shadow coverage */
+    --shadow-h: 20px; /* Reduced height for subtlety */
+    --shadow-top: 70%; /* Precise positioning below cube */
+    /* Layer 1: cube; Layer 2: subtle shadow beneath */
+    background-image: url('../../img/sdg-removebg-preview.png'), 
+        radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.12) 60%, rgba(0,0,0,0) 80%);
+    background-repeat: no-repeat, no-repeat;
+    /* Cube: top right; Shadow: centered below cube */
+    background-size: var(--cube-w) auto, var(--shadow-w) var(--shadow-h);
+    background-position: right var(--cube-right) top 5%, center var(--shadow-top);
+    background-color: transparent;
+    overflow: visible;
+    padding-bottom: 90px;
+    z-index: 10;
+}
+
+@media (min-width: 1200px) {
+.sdg-cube-side {
+    min-height: 520px;
+    --cube-w: 125%;
+    --cube-right: 26%;
+    --shadow-w: 55%;
+    --shadow-h: 18px;
+    --shadow-top: 72%;
+    background-size: var(--cube-w) auto, var(--shadow-w) var(--shadow-h);
+    background-position: right var(--cube-right) top 5%, center var(--shadow-top);
+    z-index: 10;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.12));
+}
+}
+@media (max-width: 991.98px) {
+.sdg-cube-side {
+    min-height: 320px;
+    --cube-w: 130%;
+    --cube-right: 26%;
+    --shadow-w: 60%;
+    --shadow-h: 12px;
+    --shadow-top: 70%;
+    background-size: var(--cube-w) auto, var(--shadow-w) var(--shadow-h);
+    background-position: right var(--cube-right) top 10%, center var(--shadow-top);
+    z-index: 10;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.1));
+}
+}
+
+/* Mission block below Vision: align left edges with Vision */
+.mission-statement {
+  position: static;
+  right: auto;
+  bottom: auto;
+  max-width: 100%;
+  margin: 24px 0 0; 
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+.mission-statement .mission-title { margin: 0 0 8px; padding: 0; font-size: 30px; font-weight: 400; color: #000000; display: block; text-shadow: none; }
+.mission-title .accent-icon { color: #00a8a8; }
+/* Improve readability for mission body over image */
+.mission-statement p { color: #2e2e2e; text-shadow: none; font-size: 18px; line-height: 1.9; font-style: normal; margin: 0; padding: 0; max-width: 640px; }
+.mission-statement .mission-lead { display: block; margin-top: 8px; padding-left: 0; }
+.mission-statement .mission-lead strong { font-weight: 400; }
+
+/* Mobile: let mission card flow below globe and full width */
+@media (max-width: 767.98px) {
+  .sdg-cube-side { min-height: 0; }
+  .mission-statement { position: relative; right: auto; bottom: auto; max-width: 100%; margin: 12px 0 0; }
+}
+
+/* Vision card minimal styling (for consistency) */
+.vision-card { position: relative; background: transparent; border: 0; /* removed left accent */ padding: 8px 0 0 0; border-radius: 0; box-shadow: none; margin-bottom: 8px; }
+.vision-title { margin-bottom: 10px !important; }
+.mission-statement { margin-top: 12px; }
+.vision-card .quote-mark { display: none; }
+/* Improve readability of the Vision text on light background */
+.vision-card blockquote { border: 0; margin: 0; padding-left: 0; }
+.vision-quote p { margin: 0; font-size: 18px; line-height: 1.9; color: #2e2e2e; text-shadow: none; }
+.vision-accents { margin-top: 12px; }
+.vision-accents .dot { display:inline-block; width:6px; height:6px; margin-right:6px; background:#00a8a8; border-radius: 50%; opacity:0.6; }
+@media (max-width: 767.98px) {
+  .theme-hero-heading { font-size: 30px; }
+  .theme-hero-subheading { font-size: 22px; }
+}
+
+/* Spacing before CTA below the section */
+.mission-cta-row { margin-top: 20px; }
+/* CTA button theming */
+.mission-cta-row a { background: #00a8a8 !important; color: #ffffff !important; border-radius: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.mission-cta-row a:hover { background: #008b8b !important; color: #ffffff !important; box-shadow: 0 6px 14px rgba(0,0,0,0.15); }
