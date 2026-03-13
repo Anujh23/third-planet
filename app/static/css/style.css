@@ -1980,6 +1980,50 @@ textarea.form-control {
     align-items: center;
     justify-content: center;
     color: #fff;
+    position: relative;
+    overflow: hidden;
+    background-size: 200% 200% !important;
+    animation: avatarGradient 6s ease infinite;
+}
+
+.team-avatar::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+    animation: avatarShimmer 4s ease-in-out infinite;
+}
+
+.team-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+    background-size: 300% 300%;
+    animation: avatarShine 5s ease-in-out infinite;
+}
+
+@keyframes avatarGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes avatarShimmer {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
+    50% { transform: translate(25%, 25%) rotate(15deg); opacity: 1; }
+}
+
+@keyframes avatarShine {
+    0%, 100% { background-position: 200% 200%; }
+    50% { background-position: 0% 0%; }
+}
+
+.team-card:hover .team-avatar {
+    animation-duration: 2s;
 }
 
 .team-avatar span {
@@ -1988,6 +2032,15 @@ textarea.form-control {
     font-family: var(--font-heading);
     letter-spacing: 3px;
     opacity: 0.9;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    animation: avatarPulse 3s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 .team-card-featured .team-avatar span {
