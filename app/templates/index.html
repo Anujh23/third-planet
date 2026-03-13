@@ -45,7 +45,7 @@
 <!-- Floating Stats -->
 <section class="stats-float">
     <div class="container">
-        <div class="stats-bar fade-in">
+        <div class="stats-bar fade-in fade-in-stagger">
             <div class="stat-card">
                 <div class="stat-icon"><i class="fa fa-calendar-check-o"></i></div>
                 <div class="stat-info">
@@ -87,7 +87,7 @@
             <br><strong>— Founding Team, Third Planet Foundation</strong>
         </div>
         <div class="about-preview">
-            <div class="about-preview-left fade-in">
+            <div class="about-preview-left fade-in-left">
                 <div class="about-preview-img">
                     <img src="{{ images.about }}" alt="Third Planet Foundation at work" loading="lazy">
                     <div class="experience-badge">
@@ -100,7 +100,7 @@
                     <br><strong>— Ram Lakhan, Sarpanch, Madhya Pradesh</strong>
                 </div>
             </div>
-            <div class="about-preview-content fade-in">
+            <div class="about-preview-content fade-in-right">
                 <div class="section-header left-header">
                     <span class="label"><span></span>About Us</span>
                 </div>
@@ -127,7 +127,7 @@
             <h2>Our Programmes</h2>
             <p>Working across diverse development themes aligned to Schedule VII and Sustainable Development Goals.</p>
         </div>
-        <div class="program-grid">
+        <div class="program-grid fade-in-stagger">
             {% for area in thematic_areas %}
             <div class="program-card fade-in">
                 <img src="{{ area.image }}" alt="{{ area.title }}" loading="lazy">
@@ -191,7 +191,7 @@
             <h2>Our Services</h2>
             <p>End-to-end CSR solutions from policy formulation to impact reporting — we handle the complete lifecycle so you can focus on your core business.</p>
         </div>
-        <div class="services-editorial">
+        <div class="services-editorial fade-in-stagger">
             {% for svc in services %}
             <div class="service-editorial-item fade-in">
                 <div class="service-editorial-num">{{ "%02d" | format(loop.index) }}</div>
@@ -246,7 +246,7 @@
             <h2>Featured Projects</h2>
             <p>Impactful CSR implementations across India in partnership with leading organisations.</p>
         </div>
-        <div class="grid grid-3">
+        <div class="grid grid-3 fade-in-stagger">
             {% for proj in projects %}
             <a href="/project/{{ proj.slug }}" class="project-card fade-in">
                 <div class="project-card-img">
@@ -275,7 +275,7 @@
             <h2>Accreditations & Registrations</h2>
             <p>Trusted credentials that underline our commitment to transparency, compliance, and governance.</p>
         </div>
-        <div class="credentials-strip fade-in">
+        <div class="credentials-strip fade-in fade-in-stagger">
             <div class="credential-badge">
                 <div class="credential-icon"><i class="fa fa-university"></i></div>
                 <div class="credential-info">

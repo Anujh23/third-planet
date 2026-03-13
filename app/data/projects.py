@@ -14,12 +14,6 @@ EXTERNAL_REFERENCES = [
         "icon": "fa-check-circle",
     },
     {
-        "title": "Third Planet Foundation — Organisation Credentials",
-        "source": "SlideShare",
-        "url": "https://www.slideshare.net/slideshow/third-planet-foundation-credential/251052745",
-        "icon": "fa-file-powerpoint-o",
-    },
-    {
         "title": "Third Planet Foundation — Field Notes & Insights",
         "source": "Medium",
         "url": "https://thirdplanetfoundation.medium.com/",
