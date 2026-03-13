@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Social Media — Follow Third Planet Foundation{% endblock %}
+{% block meta_description %}Follow Third Planet Foundation on LinkedIn, Instagram, Facebook, Medium, and Twitter for CSR updates, field stories, and programme announcements.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/gallery" itemprop="item"><span itemprop="name">Media</span></a><meta itemprop="position" content="2"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Social Media</span><meta itemprop="position" content="3"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/community.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Social Media</h1>
+        <p>Stay connected with our work across platforms</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Follow Us</span>
+            <h2>Connect With Us Online</h2>
+            <p>Follow Third Planet Foundation on social media to see real-time updates from the field, impact stories, programme announcements, and behind-the-scenes glimpses of our work across India.</p>
+        </div>
+        <div class="social-grid fade-in">
+            <a href="{{ site.linkedin }}" target="_blank" class="social-card social-card-linkedin">
+                <div class="social-card-icon"><i class="fa fa-linkedin"></i></div>
+                <h3>LinkedIn</h3>
+                <p>Professional updates, thought leadership, CSR insights, and partnership announcements.</p>
+                <span class="social-card-link">Follow on LinkedIn <i class="fa fa-external-link"></i></span>
+            </a>
+            <a href="{{ site.instagram }}" target="_blank" class="social-card social-card-instagram">
+                <div class="social-card-icon"><i class="fa fa-instagram"></i></div>
+                <h3>Instagram</h3>
+                <p>Visual stories from the field — communities, programmes, and the people behind the impact.</p>
+                <span class="social-card-link">Follow on Instagram <i class="fa fa-external-link"></i></span>
+            </a>
+            <a href="{{ site.facebook }}" target="_blank" class="social-card social-card-facebook">
+                <div class="social-card-icon"><i class="fa fa-facebook"></i></div>
+                <h3>Facebook</h3>
+                <p>Community updates, event coverage, photo albums, and programme highlights.</p>
+                <span class="social-card-link">Follow on Facebook <i class="fa fa-external-link"></i></span>
+            </a>
+            <a href="{{ site.twitter }}" target="_blank" class="social-card social-card-twitter">
+                <div class="social-card-icon"><i class="fa fa-twitter"></i></div>
+                <h3>Twitter / X</h3>
+                <p>Quick updates, CSR news, policy commentary, and real-time event coverage.</p>
+                <span class="social-card-link">Follow on Twitter <i class="fa fa-external-link"></i></span>
+            </a>
+            <a href="{{ site.medium }}" target="_blank" class="social-card social-card-medium">
+                <div class="social-card-icon"><i class="fa fa-medium"></i></div>
+                <h3>Medium</h3>
+                <p>In-depth articles on CSR strategy, impact stories, and development sector perspectives.</p>
+                <span class="social-card-link">Read on Medium <i class="fa fa-external-link"></i></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container fade-in">
+        <h2>Want to Collaborate?</h2>
+        <p>Whether it's a partnership, media inquiry, or simply a conversation about CSR — we'd love to hear from you.</p>
+        <a href="/contact" class="btn btn-primary btn-lg">Get in Touch <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}

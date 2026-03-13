@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Our People — Leadership & Field Team{% endblock %}
+{% block meta_description %}Meet the Third Planet Foundation team — development professionals, field coordinators, and leaders driving CSR programmes across 20+ Indian states.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/about" itemprop="item"><span itemprop="name">About Us</span></a><meta itemprop="position" content="2"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Our People</span><meta itemprop="position" content="3"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/community.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Our People</h1>
+        <p>The people who turn vision into village-level action</p>
+    </div>
+</section>
+
+<!-- Leadership -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Leadership</span>
+            <h2>Guiding the Mission</h2>
+            <p>From boardroom strategy to last-mile delivery, our strength lies in a team that cares as deeply about impact as the communities we serve.</p>
+        </div>
+        <div class="team-grid team-grid-2">
+            {% for member in team if member.category == 'leadership' %}
+            <div class="team-card team-card-featured fade-in">
+                <div class="team-card-img">
+                    {% if member.image %}
+                    <img src="{{ member.image }}" alt="{{ member.name }}" loading="lazy">
+                    {% else %}
+                    <div class="team-avatar" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
+                        <span>{{ member.initials }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="team-card-body">
+                    <h3>{{ member.name }}</h3>
+                    <p class="role">{{ member.role }}</p>
+                    <p>{{ member.brief }}</p>
+                    {% if member.linkedin %}
+                    <a href="{{ member.linkedin }}" target="_blank" rel="noopener" class="team-social"><i class="fa fa-linkedin"></i> LinkedIn Profile</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Programme & Operations -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Programme & Operations</span>
+            <h2>Ground-Level Impact</h2>
+            <p>Development professionals who live and work close to the communities we serve — managing implementation, monitoring, and the human relationships that make programmes succeed.</p>
+        </div>
+        <div class="team-grid">
+            {% for member in team if member.category == 'programme' %}
+            <div class="team-card fade-in">
+                <div class="team-card-img">
+                    {% if member.image %}
+                    <img src="{{ member.image }}" alt="{{ member.name }}" loading="lazy">
+                    {% else %}
+                    <div class="team-avatar" style="background: linear-gradient(135deg, var(--accent), var(--accent-dark));">
+                        <span>{{ member.initials }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="team-card-body">
+                    <h3>{{ member.name }}</h3>
+                    <p class="role">{{ member.role }}</p>
+                    <p>{{ member.brief }}</p>
+                    {% if member.linkedin %}
+                    <a href="{{ member.linkedin }}" target="_blank" rel="noopener" class="team-social"><i class="fa fa-linkedin"></i> LinkedIn Profile</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Partnerships & Support -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Partnerships & Support</span>
+            <h2>Connecting the Dots</h2>
+            <p>The team that keeps corporate partnerships strong, documentation sharp, and operations running smoothly behind the scenes.</p>
+        </div>
+        <div class="team-grid team-grid-2">
+            {% for member in team if member.category == 'partnerships' %}
+            <div class="team-card fade-in">
+                <div class="team-card-img">
+                    {% if member.image %}
+                    <img src="{{ member.image }}" alt="{{ member.name }}" loading="lazy">
+                    {% else %}
+                    <div class="team-avatar" style="background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <span>{{ member.initials }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="team-card-body">
+                    <h3>{{ member.name }}</h3>
+                    <p class="role">{{ member.role }}</p>
+                    <p>{{ member.brief }}</p>
+                    {% if member.linkedin %}
+                    <a href="{{ member.linkedin }}" target="_blank" rel="noopener" class="team-social"><i class="fa fa-linkedin"></i> LinkedIn Profile</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container" style="max-width: 900px;">
+        <div class="spotlight-quote fade-in" style="max-width: 700px; margin: 0 auto;">
+            <i class="fa fa-quote-left"></i>
+            <blockquote>"Development work isn't a career for us — it's a calling. Every village we enter, every family we meet, reminds us why we chose this path."</blockquote>
+            <cite>— Jatin Dhall, Executive Director</cite>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container fade-in">
+        <h2>Join Our Team</h2>
+        <p>We're always looking for passionate people who want to make a real difference on the ground.</p>
+        <a href="/contact" class="btn btn-primary">Get in Touch <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}

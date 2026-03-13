@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}CSR Partners — 25+ Corporate Collaborations{% endblock %}
+{% block meta_description %}Third Planet Foundation's 25+ corporate partners including Omron, Airtel, HSBC, Merck, and Hero MotoCorp. Building lasting CSR impact together.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Partners</span><meta itemprop="position" content="2"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/about.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Our Partners</h1>
+        <p>Together, we've delivered 500+ projects across 20+ states</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Collaborations</span>
+            <h2>Organisations We Work With</h2>
+            <p>From multinational corporates to grassroots NGOs — our partnerships are built on shared commitment to creating lasting community impact.</p>
+        </div>
+        <div class="partners-grid fade-in">
+            {% for partner in partners %}
+            <div class="partner-card">
+                {% if partner.logo %}
+                <img src="{{ partner.logo }}" alt="{{ partner.name }}" class="partner-logo" loading="lazy">
+                {% else %}
+                <div class="partner-initial" style="background: {{ partner.color }};">{{ partner.name[0] }}</div>
+                {% endif %}
+                <span>{{ partner.name }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container" style="max-width: 800px;">
+        <div class="spotlight-quote fade-in" style="max-width: 700px; margin: 0 auto;">
+            <i class="fa fa-quote-left"></i>
+            <blockquote>"A good partnership isn't about a cheque changing hands. It's about sitting together, understanding a community's reality, and building something that outlasts the funding cycle."</blockquote>
+            <cite>— Jatin Dhall, Executive Director, Third Planet Foundation</cite>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container fade-in">
+        <h2>Become a Partner</h2>
+        <p>Join a network of organisations turning CSR commitments into real community transformation.</p>
+        <a href="/contact" class="btn btn-primary">Partner With Us <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}

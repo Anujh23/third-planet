@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }}{% endblock %}
+{% block meta_description %}{{ project.brief | default(project.title ~ ' — CSR project by Third Planet Foundation with ' ~ project.partner ~ ' in ' ~ project.location) }}{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ project.title }}",
+    "description": "{{ project.brief | default(project.title) }}",
+    "author": {
+        "@type": "Organization",
+        "name": "Third Planet Foundation",
+        "url": "https://www.3planet.org"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Third Planet Foundation",
+        "url": "https://www.3planet.org"
+    },
+    "image": "{{ project.image }}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.3planet.org/project/{{ project.slug }}"
+    }
+}
+</script>
+{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/our-presence" itemprop="item"><span itemprop="name">Our Presence</span></a><meta itemprop="position" content="2"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">{{ project.title }}</span><meta itemprop="position" content="3"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('{{ project.image }}');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>{{ project.title }}</h1>
+        <p>{{ project.partner }} · {{ project.location }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="project-detail fade-in">
+            <div class="project-detail-hero">
+                <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+            </div>
+            <div class="project-detail-meta">
+                <div class="project-meta-item">
+                    <i class="fa fa-building"></i>
+                    <div>
+                        <span>Partner</span>
+                        <strong>{{ project.partner }}</strong>
+                    </div>
+                </div>
+                <div class="project-meta-item">
+                    <i class="fa fa-map-marker"></i>
+                    <div>
+                        <span>Location</span>
+                        <strong>{{ project.location }}</strong>
+                    </div>
+                </div>
+                <div class="project-meta-item">
+                    <i class="fa fa-calendar"></i>
+                    <div>
+                        <span>Year</span>
+                        <strong>{{ project.year }}</strong>
+                    </div>
+                </div>
+                <div class="project-meta-item">
+                    <i class="fa fa-tag"></i>
+                    <div>
+                        <span>Theme</span>
+                        <strong>{{ project.theme }}</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="project-detail-content">
+                {{ project.content | safe }}
+            </div>
+        </div>
+
+        <!-- External References & Media -->
+        <div class="external-references fade-in">
+            <h3><i class="fa fa-external-link"></i> External References & Media Coverage</h3>
+            <p class="ext-ref-intro">Learn more about Third Planet Foundation's work through independent platforms and publications.</p>
+            <div class="ext-ref-grid">
+                {% for ref in external_refs %}
+                <a href="{{ ref.url }}" target="_blank" rel="noopener" class="ext-ref-card">
+                    <div class="ext-ref-icon"><i class="fa {{ ref.icon }}"></i></div>
+                    <div class="ext-ref-body">
+                        <strong>{{ ref.title }}</strong>
+                        <span class="ext-ref-source">{{ ref.source }}{% if ref.author %} · {{ ref.author }}{% endif %} <i class="fa fa-external-link"></i></span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            <div class="ext-ref-badges">
+                <span class="ext-badge"><i class="fa fa-university"></i> NITI Aayog — Darpan Empanelled</span>
+                <span class="ext-badge"><i class="fa fa-star"></i> GuideStar India Certified</span>
+                <span class="ext-badge"><i class="fa fa-laptop"></i> Nasscom Foundation BigTech</span>
+                <span class="ext-badge"><i class="fa fa-shopping-cart"></i> Government e-Marketplace</span>
+                <span class="ext-badge"><i class="fa fa-building"></i> Ministry of MSME Registered</span>
+            </div>
+        </div>
+
+        <div class="project-detail-nav fade-in">
+            <a href="/our-presence#projects-section" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-left"></i> All Projects</a>
+            <a href="/contact" class="btn btn-primary btn-sm">Discuss a Similar Project <i class="fa fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+{% if related %}
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">More Work</span>
+            <h2>Related Projects</h2>
+        </div>
+        <div class="grid grid-3">
+            {% for proj in related %}
+            <a href="/project/{{ proj.slug }}" class="project-card fade-in">
+                <div class="project-card-img">
+                    <img src="{{ proj.image }}" alt="{{ proj.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                </div>
+                <div class="project-card-body">
+                    <span class="project-partner">{{ proj.partner }}</span>
+                    <h3>{{ proj.title }}</h3>
+                    <p>{{ proj.brief[:120] }}...</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

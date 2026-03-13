@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Reading Corner — Field Diaries & CSR Stories{% endblock %}
+{% block meta_description %}Field notes and reflections from TPF's team implementing CSR programmes across India. Personal stories from education, healthcare, and community work.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/reading-corner" itemprop="item"><span itemprop="name">Media</span></a><meta itemprop="position" content="2"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Reading Corner</span><meta itemprop="position" content="3"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/education.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Reading Corner</h1>
+        <p>Field notes, reflections, and lessons from the communities we serve</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="story-section-intro fade-in">
+            <p>Our team writes from the field — sharing what works, what doesn't, and what we're learning along the way. These aren't polished think-pieces; they're honest reflections from the ground.</p>
+        </div>
+
+        {% if blogs %}
+        {# ── Featured Hero Card (first blog) ── #}
+        {% set hero = blogs[0] %}
+        {% set hero_words = (hero.content | striptags | wordcount) %}
+        {% set hero_mins = [(hero_words // 200), 1] | max %}
+        <div class="blog-hero-card fade-in">
+            <div class="blog-hero-img">
+                <span class="blog-hero-badge"><i class="fa fa-star"></i> Latest Story</span>
+                <img src="{{ hero.image }}" alt="{{ hero.title }}" loading="eager" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+            </div>
+            <div class="blog-hero-body">
+                <div class="blog-hero-label">Field Journal</div>
+                <h2><a href="/blog/{{ hero.slug }}">{{ hero.title }}</a></h2>
+                <p>{{ hero.subtitle }}</p>
+                <div class="blog-hero-meta">
+                    <span><i class="fa fa-user"></i> {{ hero.author }}</span>
+                    <span><i class="fa fa-calendar"></i> {{ hero.date }}</span>
+                    <span class="reading-time"><i class="fa fa-clock-o"></i> {{ hero_mins }} min read</span>
+                </div>
+                <a href="/blog/{{ hero.slug }}" class="btn btn-secondary btn-sm">Read Story <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        {# ── Mixed layout: blogs 1-4 (indices 1 to 4) ── #}
+        {% if blogs | length > 1 %}
+        <div class="blog-section-label">More Field Notes</div>
+        <div class="blog-grid-mixed">
+            {% for blog in blogs[1:5] %}
+            {% set words = (blog.content | striptags | wordcount) %}
+            {% set mins = [(words // 200), 1] | max %}
+            {% if loop.index == 1 %}
+            {# Tall featured card #}
+            <div class="blog-card fade-in">
+                <div class="blog-card-img">
+                    <img src="{{ blog.image }}" alt="{{ blog.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-date"><i class="fa fa-calendar"></i> {{ blog.date }}</div>
+                    <h3><a href="/blog/{{ blog.slug }}">{{ blog.title }}</a></h3>
+                    <p>{{ blog.subtitle }}</p>
+                    <div style="display:flex; align-items:center; gap:12px; margin-top:8px;">
+                        <span class="reading-time"><i class="fa fa-clock-o"></i> {{ mins }} min read</span>
+                    </div>
+                    <a href="/blog/{{ blog.slug }}" class="read-more">Read More <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+            {% else %}
+            {# Horizontal mini cards #}
+            <div class="blog-card-horiz fade-in">
+                <div class="blog-card-img">
+                    <img src="{{ blog.image }}" alt="{{ blog.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-date" style="font-size:0.72rem;"><i class="fa fa-calendar"></i> {{ blog.date }}</div>
+                    <h3><a href="/blog/{{ blog.slug }}" style="color:var(--text-dark);">{{ blog.title }}</a></h3>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:6px;">
+                        <span class="reading-time" style="font-size:0.7rem;"><i class="fa fa-clock-o"></i> {{ mins }} min</span>
+                        <a href="/blog/{{ blog.slug }}" class="read-more" style="font-size:0.8rem; margin-top:0;">Read <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {# ── Remaining blogs in a clean 3-col grid ── #}
+        {% if blogs | length > 5 %}
+        <div class="blog-section-label">More from the Field</div>
+        <div class="blog-grid-row">
+            {% for blog in blogs[5:] %}
+            {% set words = (blog.content | striptags | wordcount) %}
+            {% set mins = [(words // 200), 1] | max %}
+            <div class="blog-card fade-in">
+                <div class="blog-card-img">
+                    <img src="{{ blog.image }}" alt="{{ blog.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                </div>
+                <div class="blog-card-body">
+                    <div class="blog-date"><i class="fa fa-calendar"></i> {{ blog.date }}</div>
+                    <h3><a href="/blog/{{ blog.slug }}">{{ blog.title }}</a></h3>
+                    <p>{{ blog.subtitle }}</p>
+                    <div style="display:flex; align-items:center; gap:12px; margin-top:8px;">
+                        <span class="reading-time"><i class="fa fa-clock-o"></i> {{ mins }} min read</span>
+                    </div>
+                    <a href="/blog/{{ blog.slug }}" class="read-more">Read More <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% else %}
+        <p style="text-align:center; color:var(--text-light);">No entries yet — check back soon.</p>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}

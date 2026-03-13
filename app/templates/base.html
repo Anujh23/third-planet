@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Third Planet Foundation{% endblock %} | Third Planet Foundation</title>
+    <meta name="description" content="{% block meta_description %}Third Planet Foundation is a national CSR implementation organisation registered as Section 8 not-for-profit, working across India since 2012.{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#4A7C59">
+    <link rel="canonical" href="{{ site.website }}{{ request.url.path }}">
+    <link rel="icon" href="/static/img/favicon.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Third Planet Foundation">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{% endblock %}{% if not self.og_title() %}{{ self.title() }} | Third Planet Foundation{% endif %}">
+    <meta property="og:description" content="{% block og_description %}{% endblock %}{% if not self.og_description() %}{{ self.meta_description() }}{% endif %}">
+    <meta property="og:image" content="{{ site.website }}/static/img/logo.png">
+    <meta property="og:url" content="{{ site.website }}{{ request.url.path }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block tw_title %}{% endblock %}{% if not self.tw_title() %}{{ self.title() }} | Third Planet Foundation{% endif %}">
+    <meta name="twitter:description" content="{% block tw_description %}{% endblock %}{% if not self.tw_description() %}{{ self.meta_description() }}{% endif %}">
+    <meta name="twitter:image" content="{{ site.website }}/static/img/logo.png">
+
+    <!-- JSON-LD: Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "Third Planet Foundation",
+        "alternateName": "TPF",
+        "url": "{{ site.website }}",
+        "logo": "{{ site.website }}/static/img/logo.png",
+        "description": "National CSR implementation organisation registered as Section 8 not-for-profit, working on diverse thematic areas aligned to Schedule VII and SDGs since 2012.",
+        "foundingDate": "2012",
+        "areaServed": {
+            "@type": "Country",
+            "name": "India"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Centrum Mall, Office No.2, 1st Floor, Sultanpur, MG Road",
+            "addressLocality": "New Delhi",
+            "addressRegion": "Delhi",
+            "postalCode": "110030",
+            "addressCountry": "IN"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-11-4168-5208",
+            "contactType": "customer service",
+            "email": "info@3planet.org",
+            "availableLanguage": ["English", "Hindi"]
+        },
+        "sameAs": [
+            "{{ site.linkedin }}",
+            "{{ site.instagram }}",
+            "{{ site.facebook }}",
+            "{{ site.medium }}",
+            "{{ site.twitter }}"
+        ]
+    }
+    </script>
+
+    <!-- JSON-LD: Breadcrumb -->
+    {% block schema_breadcrumb %}{% endblock %}
+
+    <!-- JSON-LD: Page-specific schema -->
+    {% block extra_schema %}{% endblock %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/static/img/logo.png" alt="Third Planet Foundation" width="180" height="45" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-fallback" style="display:none;">
+                    <span class="logo-icon"><i class="fa fa-globe"></i></span>
+                    <span class="logo-text">Third Planet<br><small>Foundation</small></span>
+                </div>
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li class="has-dropdown">
+                        <a href="/about">About Us <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="/our-mission">Our Mission</a></li>
+                            <li><a href="/our-story">Our Story</a></li>
+                            <li><a href="/our-pillars">Our People</a></li>
+                            <li><a href="/our-values">Our Values</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/services">What We Do <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="/services">Services</a></li>
+                            <li><a href="/our-approach">Our Approach</a></li>
+                            <li><a href="/our-process">Our Process</a></li>
+                            <li><a href="/stories">Impact Stories</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/our-presence">Our Presence</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Media <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="/gallery">Gallery</a></li>
+                            <li><a href="/reading-corner">Reading Corner</a></li>
+                            <li><a href="/reports">Reports & Transparency</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/partners">Partners</a></li>
+                    <li><a href="/contact" class="nav-cta">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-accent"></div>
+    </header>
+
+    <!-- Floating Social Icons -->
+    <div class="social-float">
+        <a href="{{ site.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-float-icon sf-linkedin"><i class="fa fa-linkedin"></i></a>
+        <a href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Instagram" class="social-float-icon sf-instagram"><i class="fa fa-instagram"></i></a>
+        <a href="{{ site.facebook }}" target="_blank" rel="noopener" aria-label="Facebook" class="social-float-icon sf-facebook"><i class="fa fa-facebook"></i></a>
+        <a href="{{ site.medium }}" target="_blank" rel="noopener" aria-label="Medium" class="social-float-icon sf-medium"><i class="fa fa-medium"></i></a>
+        <a href="{{ site.twitter }}" target="_blank" rel="noopener" aria-label="Twitter" class="social-float-icon sf-twitter"><i class="fa fa-twitter"></i></a>
+    </div>
+
+    <!-- Breadcrumb -->
+    {% block breadcrumb %}{% endblock %}
+
+    <!-- Main Content -->
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- About Column -->
+                    <div class="footer-col">
+                        <div class="footer-logo">
+                            <img src="/static/img/logo.png" alt="Third Planet Foundation" width="180" height="45" loading="lazy" style="height: 45px; width: auto; filter: brightness(0) invert(1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span style="display:none;">
+                                <span class="logo-icon"><i class="fa fa-globe"></i></span>
+                                Third Planet Foundation
+                            </span>
+                        </div>
+                        <p>A national CSR implementation organisation registered as Section 8 not-for-profit, working on diverse thematic areas aligned to Schedule VII and SDGs since 2012.</p>
+                        <div class="footer-social">
+                            <a href="{{ site.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                            <a href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="{{ site.facebook }}" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ site.medium }}" target="_blank" rel="noopener" aria-label="Medium"><i class="fa fa-medium"></i></a>
+                            <a href="{{ site.twitter }}" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="/about">About Us</a></li>
+                            <li><a href="/services">What We Do</a></li>
+                            <li><a href="/our-presence">Our Presence</a></li>
+                            <li><a href="/stories">Impact Stories</a></li>
+                            <li><a href="/partners">Partners</a></li>
+                            <li><a href="/reports">Reports</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Thematic Areas -->
+                    <div class="footer-col">
+                        <h4>Thematic Areas</h4>
+                        <ul>
+                            <li><a href="/our-presence#projects-section">Education</a></li>
+                            <li><a href="/our-presence#projects-section">Healthcare</a></li>
+                            <li><a href="/our-presence#projects-section">Women Empowerment</a></li>
+                            <li><a href="/our-presence#projects-section">Rural Development</a></li>
+                            <li><a href="/our-presence#projects-section">Skill Development</a></li>
+                            <li><a href="/our-presence#projects-section">WASH</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="footer-col">
+                        <h4>Contact Us</h4>
+                        <ul class="footer-contact">
+                            <li><i class="fa fa-map-marker"></i> {{ site.address }}</li>
+                            {% if site.phone %}<li><i class="fa fa-phone"></i> {{ site.phone }}</li>{% endif %}
+                            <li><i class="fa fa-phone"></i> {{ site.tel }}</li>
+                            <li><i class="fa fa-envelope"></i> <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Third Planet Foundation. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-conditions">Terms & Conditions</a>
+                    <a href="/disclaimer">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script src="/static/js/main.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% block title %}CSR Annual Reports & Transparency{% endblock %}
+{% block meta_description %}Download Third Planet Foundation's CSR annual reports, impact assessments, and transparency documents. GuideStar certified, NITI Aayog empanelled.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Reports & Transparency</span><meta itemprop="position" content="2"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/sdg.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Reports & Transparency</h1>
+        <p>Open books, honest reporting — because accountability is not optional</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width: 1000px;">
+        <div class="mission-split fade-in" style="margin-bottom: 50px;">
+            <div class="mission-visual">
+                <img src="/static/img/gallery/Third_Planet Foundation_Social Impact_3.jpg" alt="Third Planet Foundation transparency and reporting" loading="lazy">
+            </div>
+            <div class="mission-text">
+                <span class="label">Transparency</span>
+                <h2>We Believe in Open Books</h2>
+                <p>Transparency isn't a section on our website — it's how we operate. Every rupee is accounted for, every outcome is measured, and every report is shared openly with our partners and the public.</p>
+                <p>As a GuideStar India certified and NITI Aayog empanelled organisation, we hold ourselves to the highest standards of governance and financial disclosure.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Annual Reports -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Annual Reports</span>
+            <h2>CSR Annual Reports</h2>
+            <p>Our annual reports document the year's programmes, financials, and impact across all thematic areas.</p>
+        </div>
+        <div class="grid grid-3 fade-in">
+            {% for report in reports %}
+            <div class="report-card">
+                <div class="report-card-icon">
+                    <i class="fa fa-file-pdf-o"></i>
+                </div>
+                <div class="report-card-body">
+                    <h3>{{ report.title }}</h3>
+                    <p>{{ report.description }}</p>
+                    <div class="report-meta">
+                        <span><i class="fa fa-calendar"></i> {{ report.year }}</span>
+                    </div>
+                    {% if report.available %}
+                    <a href="{{ report.url }}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="margin-top: 12px;">
+                        <i class="fa fa-download"></i> Download PDF
+                    </a>
+                    {% else %}
+                    <span class="report-coming-soon">Coming Soon</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Certifications & Compliance -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Governance</span>
+            <h2>Certifications & Compliance</h2>
+            <p>Our credentials and registrations — independently verified and publicly accessible.</p>
+        </div>
+        <div class="credentials-strip fade-in">
+            <div class="credential-badge">
+                <div class="credential-icon"><i class="fa fa-university"></i></div>
+                <div class="credential-info">
+                    <h4>NITI Aayog — Darpan</h4>
+                    <p>Government-empanelled CSR implementation partner</p>
+                </div>
+            </div>
+            <div class="credential-badge">
+                <div class="credential-icon credential-icon-accent"><i class="fa fa-star"></i></div>
+                <div class="credential-info">
+                    <h4>GuideStar India</h4>
+                    <p>Platinum-level transparency certification</p>
+                </div>
+            </div>
+            <div class="credential-badge">
+                <div class="credential-icon credential-icon-warm"><i class="fa fa-shopping-cart"></i></div>
+                <div class="credential-info">
+                    <h4>GeM Registered</h4>
+                    <p>Government e-Marketplace vendor</p>
+                </div>
+            </div>
+            <div class="credential-badge">
+                <div class="credential-icon"><i class="fa fa-industry"></i></div>
+                <div class="credential-info">
+                    <h4>MSME Certified</h4>
+                    <p>Ministry of MSME registered organisation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Documents -->
+<section class="section section-alt">
+    <div class="container" style="max-width: 900px;">
+        <div class="section-header fade-in">
+            <span class="label">Documents</span>
+            <h2>Key Organisational Documents</h2>
+        </div>
+        <div class="grid grid-2 fade-in" style="gap: 16px;">
+            <div class="report-doc-card">
+                <i class="fa fa-file-text-o"></i>
+                <div>
+                    <h4>Registration Certificate</h4>
+                    <p>Section 8 Company — Ministry of Corporate Affairs</p>
+                </div>
+            </div>
+            <div class="report-doc-card">
+                <i class="fa fa-file-text-o"></i>
+                <div>
+                    <h4>12A & 80G Certificates</h4>
+                    <p>Income Tax exemption and donor tax benefit certificates</p>
+                </div>
+            </div>
+            <div class="report-doc-card">
+                <i class="fa fa-file-text-o"></i>
+                <div>
+                    <h4>CSR-1 Registration</h4>
+                    <p>Registered as CSR implementing agency under Companies Act</p>
+                </div>
+            </div>
+            <div class="report-doc-card">
+                <i class="fa fa-file-text-o"></i>
+                <div>
+                    <h4>Audited Financial Statements</h4>
+                    <p>Independently audited annual financial statements</p>
+                </div>
+            </div>
+        </div>
+        <div class="fade-in" style="text-align: center; margin-top: 30px;">
+            <p style="color: var(--text-light); font-size: 0.95rem;">Need copies of any documents? <a href="/contact">Contact us</a> and we'll share them within 24 hours.</p>
+        </div>
+    </div>
+</section>
+
+<!-- External Verification -->
+<section class="section">
+    <div class="container" style="max-width: 900px;">
+        <div class="section-header fade-in">
+            <span class="label">Third-Party Verification</span>
+            <h2>Verify Us Independently</h2>
+            <p>Don't take our word for it — check our credentials on these independent platforms.</p>
+        </div>
+        <div class="grid grid-2 fade-in" style="gap: 16px;">
+            <a href="https://give.do/ngos/third-planet-foundation" target="_blank" rel="noopener" class="ext-ref-card">
+                <div class="ext-ref-icon"><i class="fa fa-check-circle"></i></div>
+                <div class="ext-ref-body">
+                    <strong>Give.do — Verified Nonprofit Profile</strong>
+                    <span class="ext-ref-source">Independent verification <i class="fa fa-external-link"></i></span>
+                </div>
+            </a>
+            <a href="https://www.slideshare.net/slideshow/third-planet-foundation-credential/251052745" target="_blank" rel="noopener" class="ext-ref-card">
+                <div class="ext-ref-icon"><i class="fa fa-file-powerpoint-o"></i></div>
+                <div class="ext-ref-body">
+                    <strong>Organisation Credentials</strong>
+                    <span class="ext-ref-source">SlideShare <i class="fa fa-external-link"></i></span>
+                </div>
+            </a>
+            <a href="https://thecsrjournal.in/strategic-csr-and-impact-assessment-a-blueprint-for-indias-sustainable-future/" target="_blank" rel="noopener" class="ext-ref-card">
+                <div class="ext-ref-icon"><i class="fa fa-newspaper-o"></i></div>
+                <div class="ext-ref-body">
+                    <strong>Published in The CSR Journal</strong>
+                    <span class="ext-ref-source">By Jatin Dhall, Executive Director <i class="fa fa-external-link"></i></span>
+                </div>
+            </a>
+            <a href="https://www.globalhand.org/en/search/all/organisation/50865" target="_blank" rel="noopener" class="ext-ref-card">
+                <div class="ext-ref-icon"><i class="fa fa-globe"></i></div>
+                <div class="ext-ref-body">
+                    <strong>GlobalHand (UN) Profile</strong>
+                    <span class="ext-ref-source">Corporate-NGO Partnerships <i class="fa fa-external-link"></i></span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container fade-in">
+        <h2>Questions About Our Governance?</h2>
+        <p>We're happy to share any document, answer any question, and walk you through our processes. Transparency is a conversation, not just a download.</p>
+        <a href="/contact" class="btn btn-primary">Get in Touch <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}

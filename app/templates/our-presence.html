@@ -1,0 +1,359 @@
+{% extends "base.html" %}
+{% block title %}Our Presence — CSR Projects Across 20+ Indian States{% endblock %}
+{% block meta_description %}Explore Third Planet Foundation's CSR projects across 20+ Indian states. Interactive map, project details — education, healthcare, women empowerment, water.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Our Presence</span><meta itemprop="position" content="2"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/rural.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Our Presence & Projects</h1>
+        <p>On the ground across 20+ states — click a state to explore our work there</p>
+    </div>
+</section>
+
+<!-- Presence Tabs -->
+<section class="presence-section presence-page">
+    <div class="presence-pattern"></div>
+    <div class="container">
+        <div class="presence-tabs">
+            <div class="presence-tab-nav">
+                <button class="presence-tab-btn active" data-tab="map"><i class="fa fa-map-o"></i> Interactive Map</button>
+                <button class="presence-tab-btn" data-tab="regions"><i class="fa fa-th-large"></i> Where We Work</button>
+                <button class="presence-tab-btn" data-tab="highlights"><i class="fa fa-star"></i> Key Highlights</button>
+            </div>
+
+            <!-- Tab 1: Map -->
+            <div class="presence-tab-panel active" id="tab-map">
+                <div class="presence-map-layout">
+                    <div class="presence-map">
+                        <div class="india-map-wrap">
+                            <object data="/static/img/india-map.svg" type="image/svg+xml" id="india-map" class="india-map-svg"></object>
+                            <div class="map-tooltip" id="map-tooltip"></div>
+                        </div>
+                    </div>
+                    <div class="presence-map-sidebar">
+                        <div class="map-sidebar-stat">
+                            <h3>20+</h3>
+                            <p>States & Union Territories</p>
+                        </div>
+                        <div class="map-sidebar-stat">
+                            <h3>500+</h3>
+                            <p>Projects Implemented</p>
+                        </div>
+                        <div class="map-sidebar-stat">
+                            <h3>1M+</h3>
+                            <p>Lives Touched</p>
+                        </div>
+                        <div class="map-sidebar-note">
+                            <i class="fa fa-hand-pointer-o"></i>
+                            <p>Hover to see our work — click a state to filter projects below</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-legend">
+                    <span class="legend-active"></span> Active Presence
+                    <span class="legend-inactive"></span> Other States
+                </div>
+            </div>
+
+            <!-- Tab 2: Regions -->
+            <div class="presence-tab-panel" id="tab-regions">
+                <div class="region-grid">
+                    <div class="region-card">
+                        <div class="region-card-img">
+                            <img src="{{ images.community }}" alt="North India" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                            <div class="region-label">North India</div>
+                        </div>
+                        <div class="region-card-body">
+                            <div class="region-states">
+                                <span>Delhi NCR</span><span>Rajasthan</span><span>Uttar Pradesh</span><span>Haryana</span><span>Punjab</span><span>Uttarakhand</span><span>Ladakh</span>
+                            </div>
+                            <p>Water conservation, education, COVID relief, rural infrastructure, youth skilling in Ladakh, and farmer support across the north.</p>
+                        </div>
+                    </div>
+                    <div class="region-card">
+                        <div class="region-card-img">
+                            <img src="{{ images.women }}" alt="Central India" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                            <div class="region-label">Central India</div>
+                        </div>
+                        <div class="region-card-body">
+                            <div class="region-states">
+                                <span>Madhya Pradesh</span><span>Chhattisgarh</span>
+                            </div>
+                            <p>Women's SHGs, clean energy, tribal welfare, WASH, and sustainable agriculture in India's central corridor.</p>
+                        </div>
+                    </div>
+                    <div class="region-card">
+                        <div class="region-card-img">
+                            <img src="{{ images.education }}" alt="East India" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                            <div class="region-label">East & Northeast</div>
+                        </div>
+                        <div class="region-card-body">
+                            <div class="region-states">
+                                <span>West Bengal</span><span>Bihar</span><span>Jharkhand</span><span>Odisha</span><span>Assam</span><span>Meghalaya</span>
+                            </div>
+                            <p>Foundational literacy, disaster relief, skill development, flood recovery, and indigenous farming support.</p>
+                        </div>
+                    </div>
+                    <div class="region-card">
+                        <div class="region-card-img">
+                            <img src="{{ images.skill }}" alt="West & South India" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                            <div class="region-label">West & South</div>
+                        </div>
+                        <div class="region-card-body">
+                            <div class="region-states">
+                                <span>Maharashtra</span><span>Gujarat</span><span>Andhra Pradesh</span><span>Telangana</span><span>Karnataka</span><span>Tamil Nadu</span>
+                            </div>
+                            <p>Livelihood development, social impact assessments, healthcare access, digital literacy, and women's empowerment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Highlights -->
+            <div class="presence-tab-panel" id="tab-highlights">
+                <div class="highlight-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fa fa-tint"></i></div>
+                        <h4>Rajasthan — Water Conservation</h4>
+                        <p>Restored 12 traditional ponds across the semi-arid belt — de-silted, bund-reinforced, with trained village maintenance committees. Two years on, the committees still maintain them independently.</p>
+                        <span class="highlight-tag">Environment</span>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fa fa-graduation-cap"></i></div>
+                        <h4>Uttar Pradesh — Girl Child Education</h4>
+                        <p>After-school Learning Labs with trained local tutors improved reading outcomes across multiple villages. First-generation learners now read fluently — some tutors run the programme independently.</p>
+                        <span class="highlight-tag">Education</span>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fa fa-fire"></i></div>
+                        <h4>Madhya Pradesh — Clean Energy</h4>
+                        <p>Women's SHGs trained to sell and maintain improved cookstoves in their own villages — cutting fuel use, reducing indoor smoke, and earning income for SHG members.</p>
+                        <span class="highlight-tag">Clean Energy</span>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fa fa-medkit"></i></div>
+                        <h4>Odisha — Mobile Health Camps</h4>
+                        <p>Preventive care and nutrition screening reached 40+ remote hamlets. Over 3,000 people received check-ups, referrals, and follow-up care.</p>
+                        <span class="highlight-tag">Healthcare</span>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fa fa-users"></i></div>
+                        <h4>Jharkhand — Women in Governance</h4>
+                        <p>Three women from a tribal block won panchayat seats after our leadership mentorship and now champion girl child education in their wards.</p>
+                        <span class="highlight-tag">Empowerment</span>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="fa fa-leaf"></i></div>
+                        <h4>Meghalaya — Indigenous Farming</h4>
+                        <p>Partnered with NESFAS to support indigenous farming practices, protecting biodiversity while improving farmer incomes through direct market access.</p>
+                        <span class="highlight-tag">Agriculture</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="presence-projects" id="projects-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Our Work</span>
+            <h2 id="projects-heading">Our Projects</h2>
+            <p>From COVID-19 relief drives in Delhi to girl child education in West Bengal — every project is a partnership, every partnership is a story.</p>
+        </div>
+        <div class="projects-filter-bar fade-in" id="projects-filter">
+            <span class="filter-label">Filter:</span>
+            <button class="filter-chip active" data-filter="all">All Projects</button>
+            {% for state in presence %}
+            <button class="filter-chip" data-filter="{{ state }}">{{ state }}</button>
+            {% endfor %}
+        </div>
+        <div class="projects-grid-presence" id="projects-grid">
+            {% for proj in projects %}
+            <a href="/project/{{ proj.slug }}" class="project-card fade-in" data-location="{{ proj.location }}">
+                <div class="project-card-img">
+                    <img src="{{ proj.image }}" alt="{{ proj.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                </div>
+                <div class="project-card-body">
+                    <span class="project-partner">{{ proj.partner }}</span>
+                    <h3>{{ proj.title }}</h3>
+                    <p>{{ proj.brief }}</p>
+                    <span class="project-read-more">Read Full Story <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
+            {% endfor %}
+            <div class="no-projects-msg" id="no-projects-msg" style="display: none;">
+                <i class="fa fa-map-marker" style="font-size: 2rem; margin-bottom: 12px; color: var(--primary);"></i>
+                <p>We work in this state but specific project case studies are coming soon.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- All States List -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Coverage</span>
+            <h2>States We Operate In</h2>
+        </div>
+        <div class="presence-state-list fade-in">
+            {% for state in presence %}
+            <div class="presence-state-chip"><i class="fa fa-map-marker"></i> {{ state }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container fade-in">
+        <h2>Have a CSR Project in Mind?</h2>
+        <p>Tell us your target geography and goals — we'll show you what's possible.</p>
+        <a href="/contact" class="btn btn-primary">Let's Talk <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// ── Project Filtering ──
+(function() {
+    var filterChips = document.querySelectorAll('.filter-chip');
+    var projectCards = document.querySelectorAll('#projects-grid .project-card');
+    var noMsg = document.getElementById('no-projects-msg');
+    var heading = document.getElementById('projects-heading');
+
+    var stateKeywords = {
+        'Delhi NCR': ['delhi', 'gurgaon', 'faridabad', 'noida', 'ncr'],
+        'Rajasthan': ['rajasthan'],
+        'Uttar Pradesh': ['uttar pradesh', 'noida'],
+        'Madhya Pradesh': ['madhya pradesh'],
+        'Maharashtra': ['maharashtra', 'mumbai', 'pune', 'jalgaon'],
+        'Gujarat': ['gujarat'],
+        'Haryana': ['haryana', 'gurgaon', 'faridabad'],
+        'Punjab': ['punjab'],
+        'West Bengal': ['west bengal', 'kolkata'],
+        'Chhattisgarh': ['chhattisgarh'],
+        'Uttarakhand': ['uttarakhand'],
+        'Bihar': ['bihar'],
+        'Jharkhand': ['jharkhand'],
+        'Odisha': ['odisha'],
+        'Andhra Pradesh': ['andhra pradesh'],
+        'Telangana': ['telangana', 'hyderabad'],
+        'Karnataka': ['karnataka', 'bengaluru', 'bangalore'],
+        'Tamil Nadu': ['tamil nadu', 'chennai'],
+        'Assam': ['assam'],
+        'Meghalaya': ['meghalaya'],
+        'Ladakh': ['ladakh', 'kargil', 'leh']
+    };
+
+    function filterProjects(stateName) {
+        var visibleCount = 0;
+        filterChips.forEach(function(c) {
+            c.classList.toggle('active', c.getAttribute('data-filter') === stateName);
+        });
+
+        var keywords = stateKeywords[stateName] || [stateName.toLowerCase()];
+        projectCards.forEach(function(card) {
+            var loc = (card.getAttribute('data-location') || '').toLowerCase();
+            var match = stateName === 'all' || loc.indexOf('multiple') !== -1;
+            if (!match) {
+                for (var i = 0; i < keywords.length; i++) {
+                    if (loc.indexOf(keywords[i]) !== -1) { match = true; break; }
+                }
+            }
+            card.style.display = match ? '' : 'none';
+            if (match) visibleCount++;
+        });
+
+        if (noMsg) noMsg.style.display = visibleCount === 0 ? '' : 'none';
+        if (heading) heading.textContent = stateName === 'all' ? 'Our Projects' : 'Projects in ' + stateName;
+    }
+
+    filterChips.forEach(function(chip) {
+        chip.addEventListener('click', function() {
+            filterProjects(this.getAttribute('data-filter'));
+        });
+    });
+
+    // Expose for map click
+    window.filterProjectsByState = filterProjects;
+})();
+
+// ── India Map ──
+document.getElementById('india-map').addEventListener('load', function() {
+    var svgDoc = this.contentDocument;
+    if (!svgDoc) return;
+
+    var tooltip = document.getElementById('map-tooltip');
+    var mapWrap = document.querySelector('.india-map-wrap');
+    var stateProjects = {{ state_projects | tojson }};
+
+    var allPaths = svgDoc.querySelectorAll('path');
+    allPaths.forEach(function(p) {
+        p.style.fill = '#264332';
+        p.style.stroke = 'rgba(255,255,255,0.12)';
+        p.style.strokeWidth = '1';
+        p.style.transition = 'fill 0.3s ease, filter 0.3s ease';
+    });
+
+    var activeStates = {{ presence_map | tojson }};
+    activeStates.forEach(function(id) {
+        var el = svgDoc.getElementById(id);
+        if (el) {
+            el.style.fill = '#4A7C59';
+            el.style.cursor = 'pointer';
+            el.style.filter = 'drop-shadow(0 0 6px rgba(74,124,89,0.5))';
+
+            el.addEventListener('mouseenter', function(e) {
+                this.style.fill = '#C9915C';
+                this.style.filter = 'drop-shadow(0 0 10px rgba(201,145,92,0.5))';
+                var info = stateProjects[id];
+                if (info && tooltip) {
+                    tooltip.innerHTML = '<strong>' + info.name + '</strong><br>' + info.work + '<br><em style="font-size:0.75rem;opacity:0.8;">Click to see projects</em>';
+                    tooltip.classList.add('visible');
+                }
+            });
+
+            el.addEventListener('mousemove', function(e) {
+                if (!tooltip || !mapWrap) return;
+                var objEl = document.getElementById('india-map');
+                var objRect = objEl.getBoundingClientRect();
+                var wrapRect = mapWrap.getBoundingClientRect();
+                var x = (objRect.left - wrapRect.left) + e.clientX - objRect.left;
+                var y = (objRect.top - wrapRect.top) + e.clientY - objRect.top;
+                tooltip.style.left = x + 'px';
+                tooltip.style.top = y + 'px';
+            });
+
+            el.addEventListener('mouseleave', function() {
+                this.style.fill = '#4A7C59';
+                this.style.filter = 'drop-shadow(0 0 6px rgba(74,124,89,0.5))';
+                if (tooltip) tooltip.classList.remove('visible');
+            });
+
+            el.addEventListener('click', function() {
+                var info = stateProjects[id];
+                if (info && window.filterProjectsByState) {
+                    window.filterProjectsByState(info.name);
+                    document.getElementById('projects-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+    });
+});
+</script>
+{% endblock %}

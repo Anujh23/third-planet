@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}{{ blog.title }}{% endblock %}
+{% block meta_description %}{{ blog.subtitle | default(blog.title ~ ' — Field notes from Third Planet Foundation team working across rural India.') }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ blog.title }} | Third Planet Foundation{% endblock %}
+
+{% block extra_css %}
+<style>
+#reading-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--primary),var(--accent)); z-index:9999; width:0%; transition:width 0.1s linear; }
+</style>
+{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/reading-corner" itemprop="item"><span itemprop="name">Reading Corner</span></a><meta itemprop="position" content="2"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">{{ blog.title }}</span><meta itemprop="position" content="3"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ blog.title }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ blog.author }}"
+    },
+    "datePublished": "{{ blog.date }}",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Third Planet Foundation",
+        "logo": "{{ site.website }}/static/img/logo.png"
+    },
+    "image": "{{ site.website }}{{ blog.image }}",
+    "mainEntityOfPage": "{{ site.website }}/blog/{{ blog.slug }}"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+{# Reading progress bar #}
+<div id="reading-progress"></div>
+
+{# Page hero with blog image as background #}
+<section class="page-hero" style="background-image: url('{{ blog.image }}');">
+    <div class="hero-pattern"></div>
+    <div class="container" style="text-align:center; max-width:820px;">
+        <div style="margin-bottom:16px;">
+            <span class="reading-time" style="background:rgba(255,255,255,0.15); color:#fff; border:1px solid rgba(255,255,255,0.25);">
+                <i class="fa fa-clock-o"></i> {% set words = (blog.content | striptags | wordcount) %}{% set mins = [(words // 200), 1] | max %}{{ mins }} min read
+            </span>
+        </div>
+        <h1 style="font-size:2.4rem; line-height:1.2;">{{ blog.title }}</h1>
+        {% if blog.subtitle %}
+        <p style="margin-top:14px; font-size:1.1rem; opacity:0.85; max-width:640px; margin-left:auto; margin-right:auto;">{{ blog.subtitle }}</p>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+    <div class="blog-detail">
+
+        {# Author card at top #}
+        <div class="blog-author-card fade-in">
+            <div class="blog-author-avatar">{{ blog.author[0] }}{% if blog.author.split(' ') | length > 1 %}{{ blog.author.split(' ')[-1][0] }}{% endif %}</div>
+            <div class="blog-author-info">
+                <h4>{{ blog.author }}</h4>
+                <p>Field Team, Third Planet Foundation</p>
+                <div class="blog-meta">
+                    <span><i class="fa fa-calendar"></i> {{ blog.date }}</span>
+                    <span class="reading-time"><i class="fa fa-clock-o"></i> {% set words = (blog.content | striptags | wordcount) %}{% set mins = [(words // 200), 1] | max %}{{ mins }} min read</span>
+                </div>
+            </div>
+        </div>
+
+        {# Hero image #}
+        <div class="blog-detail-img fade-in">
+            <img src="{{ blog.image }}" alt="{{ blog.title }} — field story by {{ blog.author }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+        </div>
+
+        {# Article content #}
+        <div class="blog-detail-content fade-in" id="blog-content">
+            {{ blog.content | safe }}
+        </div>
+
+        {# Related Posts #}
+        {% set other_blogs = [] %}
+        {% for b in blogs if b.slug != blog.slug %}
+            {% if other_blogs | length < 3 %}
+                {% if other_blogs.append(b) %}{% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if other_blogs %}
+        <div class="related-posts fade-in" style="margin-top: 60px; padding-top: 40px; border-top: 2px solid var(--border);">
+            <h3>More Field Notes</h3>
+            <p class="related-sub">Other stories from our team on the ground.</p>
+            <div class="grid grid-3" style="margin-top: 0;">
+                {% for b in other_blogs %}
+                <a href="/blog/{{ b.slug }}" class="card" style="text-decoration: none; color: inherit;">
+                    <div class="card-img">
+                        <img src="{{ b.image }}" alt="{{ b.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';" style="width:100%;height:180px;object-fit:cover;">
+                    </div>
+                    <div class="card-body" style="padding:20px;">
+                        <h4 style="font-size: 0.95rem; margin-bottom: 6px; line-height:1.4; font-family:var(--font-body); font-weight:600;">{{ b.title }}</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-light);">{{ b.author }} · {{ b.date }}</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {# Navigation back #}
+        <div style="margin-top: 36px; display:flex; justify-content:center;">
+            <a href="/reading-corner" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-left"></i> Back to Reading Corner</a>
+        </div>
+
+    </div>
+</section>
+
+<script>
+(function() {
+    var bar = document.getElementById('reading-progress');
+    var content = document.getElementById('blog-content');
+    if (!bar || !content) return;
+    window.addEventListener('scroll', function() {
+        var contentTop = content.getBoundingClientRect().top + window.pageYOffset;
+        var contentBottom = contentTop + content.offsetHeight;
+        var scrolled = window.pageYOffset - contentTop;
+        var total = contentBottom - contentTop - window.innerHeight;
+        var pct = total > 0 ? Math.min(Math.max(scrolled / total * 100, 0), 100) : 0;
+        bar.style.width = pct + '%';
+    }, { passive: true });
+})();
+</script>
+{% endblock %}

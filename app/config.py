@@ -1,0 +1,30 @@
+SITE = {
+    "name": "Third Planet Foundation",
+    "tagline": "CSR Implementation Organisation",
+    "phone": "",
+    "tel": "011 4168 5208",
+    "email": "info@3planet.org",
+    "email2": "communication@3planet.org",
+    "address": "Centrum Mall, Office No.2, 1st Floor, Sultanpur, MG Road, New Delhi 110030, India",
+    "facebook": "https://www.facebook.com/thirdplanetfoundation/",
+    "twitter": "https://twitter.com/PlanetThird",
+    "linkedin": "https://in.linkedin.com/company/third-planet-foundation",
+    "instagram": "https://www.instagram.com/_thirdplanetfoundation_/",
+    "medium": "https://thirdplanetfoundation.medium.com/",
+    "website": "https://www.3planet.org",
+}
+
+IMAGES = {
+    "hero": "/static/img/stock/hero.jpg",
+    "about": "/static/img/stock/about.jpg",
+    "education": "/static/img/stock/education.jpg",
+    "healthcare": "/static/img/stock/healthcare.jpg",
+    "women": "/static/img/stock/women.jpg",
+    "agriculture": "/static/img/stock/agriculture.jpg",
+    "water": "/static/img/stock/water.jpg",
+    "rural": "/static/img/stock/rural.jpg",
+    "community": "/static/img/stock/community.jpg",
+    "skill": "/static/img/stock/skill.jpg",
+    "disaster": "/static/img/stock/disaster.jpg",
+    "sdg": "/static/img/stock/sdg.jpg",
+}

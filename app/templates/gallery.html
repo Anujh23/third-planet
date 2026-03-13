@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block title %}Photo Gallery — CSR Impact Across India{% endblock %}
+{% block meta_description %}Photos from the field — Third Planet Foundation's education, healthcare, women empowerment, and community development programmes across rural India.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/gallery" itemprop="item"><span itemprop="name">Media</span></a><meta itemprop="position" content="2"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Gallery</span><meta itemprop="position" content="3"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/gallery/Third_Planet Foundation_Social Impact_3.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Photo Gallery</h1>
+        <p>Moments from the field — where real work happens</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="story-section-intro fade-in">
+            <p>No stock photos here. These are real moments from our programmes — classrooms, health camps, village meetings, and the faces of the people whose lives our partnerships are helping to transform.</p>
+        </div>
+        <div class="filter-buttons fade-in">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Social Impact">Social Impact</button>
+            <button class="filter-btn" data-filter="Education">Education</button>
+            <button class="filter-btn" data-filter="Healthcare">Healthcare</button>
+            <button class="filter-btn" data-filter="Empowerment">Empowerment</button>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+            {% for item in gallery %}
+            <div class="gallery-item fade-in" data-category="{{ item.category }}" data-title="{{ item.title }}" data-cat-label="{{ item.category }}" data-src="/{{ item.image }}">
+                <img src="/{{ item.image }}" alt="{{ item.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                <div class="gallery-overlay">
+                    <h4>{{ item.title }}</h4>
+                    <span>{{ item.category }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# ── Lightbox ── #}
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close"><i class="fa fa-times"></i></button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image"><i class="fa fa-chevron-left"></i></button>
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next image"><i class="fa fa-chevron-right"></i></button>
+    <div class="lightbox-inner">
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption">
+            <strong id="lightbox-title"></strong>
+            <span id="lightbox-cat"></span>
+        </div>
+    </div>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<script>
+(function() {
+    var overlay = document.getElementById('lightbox');
+    var lbImg   = document.getElementById('lightbox-img');
+    var lbTitle = document.getElementById('lightbox-title');
+    var lbCat   = document.getElementById('lightbox-cat');
+    var lbCtr   = document.getElementById('lightbox-counter');
+    var items   = [];
+    var current = 0;
+
+    function getVisibleItems() {
+        return Array.from(document.querySelectorAll('.gallery-item:not([style*="none"])'));
+    }
+
+    function openLightbox(index) {
+        items = getVisibleItems();
+        if (!items.length) return;
+        current = index;
+        showItem(current);
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        overlay.focus();
+    }
+
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function showItem(idx) {
+        if (idx < 0) idx = items.length - 1;
+        if (idx >= items.length) idx = 0;
+        current = idx;
+        var item = items[current];
+        var src   = item.dataset.src || item.querySelector('img').src;
+        var title = item.dataset.title || '';
+        var cat   = item.dataset.catLabel || '';
+        lbImg.src = src;
+        lbImg.alt = title;
+        lbTitle.textContent = title;
+        lbCat.textContent   = cat;
+        lbCtr.textContent   = (current + 1) + ' / ' + items.length;
+    }
+
+    // Open on click
+    document.getElementById('gallery-grid').addEventListener('click', function(e) {
+        var item = e.target.closest('.gallery-item');
+        if (!item) return;
+        var visible = getVisibleItems();
+        var idx = visible.indexOf(item);
+        if (idx !== -1) openLightbox(idx);
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-prev').addEventListener('click', function() { showItem(current - 1); });
+    document.getElementById('lightbox-next').addEventListener('click', function() { showItem(current + 1); });
+
+    // Close on backdrop click
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!overlay.classList.contains('active')) return;
+        if (e.key === 'Escape')      closeLightbox();
+        if (e.key === 'ArrowLeft')   showItem(current - 1);
+        if (e.key === 'ArrowRight')  showItem(current + 1);
+    });
+})();
+</script>
+{% endblock %}

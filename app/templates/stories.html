@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %}Impact Stories — Real Change From CSR Programmes{% endblock %}
+{% block meta_description %}Real impact stories from Third Planet Foundation's CSR work — farmers, women, students, and communities transformed across rural India.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/services" itemprop="item"><span itemprop="name">What We Do</span></a><meta itemprop="position" content="2"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Impact Stories</span><meta itemprop="position" content="3"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/women.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Stories of Impact</h1>
+        <p>Behind every number is a name. Behind every project is a life changed.</p>    </div>
+</section>
+
+<!-- Featured Story -->
+<section class="section">
+    <div class="container">
+        <div class="story-featured fade-in">
+            <div>
+                <div class="story-featured-icon"><i class="fa fa-quote-left"></i></div>
+                <h3>Twelve Ponds and a Village That Stayed</h3>
+                <p>In a drought-prone block of Rajasthan, families were packing up for seasonal migration — again. TPF restored twelve traditional ponds: de-silting, reinforcing bunds, and training village maintenance committees. Two years later, our team returned to find the committees still active — collecting user fees, maintaining catchments, and managing repairs entirely on their own. The village didn't just get water. It got ownership.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <div style="background: rgba(255,255,255,0.1); padding: 28px; border-radius: 12px;">
+                    <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 4px;">12</div>
+                    <div style="opacity: 0.8; font-size: 0.9rem;">Traditional Ponds Restored</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 28px; border-radius: 12px; margin-top: 16px;">
+                    <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 4px;">2 yrs</div>
+                    <div style="opacity: 0.8; font-size: 0.9rem;">Community Self-Management & Counting</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="grid grid-3 fade-in" style="margin-bottom: 50px;">
+            <div style="border-radius: var(--radius); overflow: hidden;">
+                <img src="/static/img/gallery/Third_Planet Foundation_Social Impact_2.jpg" alt="Community outreach and development" loading="lazy" style="width:100%; height:220px; object-fit:cover;">
+            </div>
+            <div style="border-radius: var(--radius); overflow: hidden;">
+                <img src="/static/img/gallery/Third Planet Foundation_Quality Education and Learning4_www.3planet.org.jpg" alt="Education programmes for children" loading="lazy" style="width:100%; height:220px; object-fit:cover;">
+            </div>
+            <div style="border-radius: var(--radius); overflow: hidden;">
+                <img src="/static/img/gallery/Third Planet Foundation_Women Empowerment6.jpg" alt="Women empowerment and livelihood" loading="lazy" style="width:100%; height:220px; object-fit:cover;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <!-- Farmers Stories -->
+        <div class="story-category fade-in">
+            <h3><i class="fa fa-pagelines"></i> Farmers' Stories</h3>
+            <div class="story-grid">
+                {% for story in stories.farmers %}
+                <div class="story-card">
+                    <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
+                    <h4>{{ story.title }}</h4>
+                    <p>{{ story.brief }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Women Stories -->
+        <div class="story-category fade-in">
+            <h3><i class="fa fa-female"></i> Women's Stories</h3>
+            <div class="story-grid">
+                {% for story in stories.women %}
+                <div class="story-card">
+                    <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
+                    <h4>{{ story.title }}</h4>
+                    <p>{{ story.brief }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Communities Stories -->
+        <div class="story-category fade-in">
+            <h3><i class="fa fa-home"></i> Community Stories</h3>
+            <div class="story-grid">
+                {% for story in stories.communities %}
+                <div class="story-card">
+                    <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
+                    <h4>{{ story.title }}</h4>
+                    <p>{{ story.brief }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container fade-in">
+        <h2>Every Story Begins With a Partnership</h2>
+        <p>Your CSR investment doesn't just fund programmes — it writes life-changing stories.</p>
+        <a href="/contact" class="btn btn-primary">Partner With Us <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}

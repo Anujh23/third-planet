@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/education.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Our Projects</h1>
+        <p>Every project is a partnership. Every partnership is a story.</p>    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="story-section-intro fade-in">
+            <p>From COVID-19 relief drives in Delhi to girl child education in West Bengal, from watershed restoration in Rajasthan to women's empowerment in Madhya Pradesh — here's a snapshot of the work we're most proud of.</p>
+        </div>
+        <div class="grid grid-3">
+            {% for proj in projects %}
+            <a href="/project/{{ proj.slug }}" class="project-card fade-in">
+                <div class="project-card-img">
+                    <img src="{{ proj.image }}" alt="{{ proj.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                </div>
+                <div class="project-card-body">
+                    <span class="project-partner">{{ proj.partner }}</span>
+                    <h3>{{ proj.title }}</h3>
+                    <p>{{ proj.brief }}</p>
+                    <span class="project-read-more">Read Full Story <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container fade-in">
+        <h2>Have a CSR Project in Mind?</h2>
+        <p>Tell us about your goals — we'll show you how they can become a story of real community change.</p>
+        <a href="/contact" class="btn btn-primary">Let's Talk <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}

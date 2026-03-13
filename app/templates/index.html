@@ -1,0 +1,360 @@
+{% extends "base.html" %}
+{% block title %}CSR Implementation Partner India{% endblock %}
+{% block meta_description %}Trusted CSR implementation partner across 20+ Indian states since 2012. Education, healthcare, women empowerment — Section 8 nonprofit aligned to Schedule VII.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-bg" style="background-image: url('{{ images.hero }}');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-shape hero-shape-1"></div>
+    <div class="hero-shape hero-shape-2"></div>
+    <div class="hero-shape hero-shape-3"></div>
+    <div class="container">
+        <div class="hero-content fade-in">
+            <div class="hero-badge">
+                <i class="fa fa-globe"></i> Section 8 Not-for-Profit | Est. 2012
+            </div>
+            <h1>Every Village Has a Story.<br>We Help Write the <span>Next Chapter.</span></h1>
+            <p>We are on the ground — in classrooms, health camps, and village squares — walking alongside communities as they build a better tomorrow. For over a decade, Third Planet Foundation has turned CSR commitments into real change you can see, hear, and feel.</p>
+            <div class="hero-buttons">
+                <a href="/our-presence" class="btn btn-primary">Our Work <i class="fa fa-arrow-right"></i></a>
+                <a href="/contact" class="btn btn-outline">Partner With Us <i class="fa fa-handshake-o"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-wave">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path d="M0,60 C320,100 680,20 1040,60 C1240,80 1360,50 1440,60 L1440,100 L0,100 Z" fill="#ffffff"/>
+        </svg>
+    </div>
+</section>
+
+<!-- Floating Stats -->
+<section class="stats-float">
+    <div class="container">
+        <div class="stats-bar fade-in">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa fa-calendar-check-o"></i></div>
+                <div class="stat-info">
+                    <h3 data-count="14" data-suffix="+">0</h3>
+                    <p>Years of Impact</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa fa-briefcase"></i></div>
+                <div class="stat-info">
+                    <h3 data-count="500" data-suffix="+">0</h3>
+                    <p>Projects Delivered</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa fa-map"></i></div>
+                <div class="stat-info">
+                    <h3 data-count="20" data-suffix="+">0</h3>
+                    <p>States Covered</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa fa-building"></i></div>
+                <div class="stat-info">
+                    <h3 data-count="25" data-suffix="+">0</h3>
+                    <p>Corporate Partners</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Preview -->
+<section class="section">
+    <div class="container">
+        <div class="about-story-intro fade-in">
+            <i class="fa fa-quote-left"></i>
+            "It started with one question — what if CSR could feel less like a report and more like a relationship? That question led us to our first village, our first school, and our first lesson: development works best when it's built with people, not for them."
+            <br><strong>— Founding Team, Third Planet Foundation</strong>
+        </div>
+        <div class="about-preview">
+            <div class="about-preview-left fade-in">
+                <div class="about-preview-img">
+                    <img src="{{ images.about }}" alt="Third Planet Foundation at work" loading="lazy">
+                    <div class="experience-badge">
+                        <h3>14+</h3>
+                        <p>Years of Service</p>
+                    </div>
+                </div>
+                <div class="beneficiary-quote">
+                    "They didn't just build a water tank — they sat with us, understood our needs, and made sure every family had access."
+                    <br><strong>— Ram Lakhan, Sarpanch, Madhya Pradesh</strong>
+                </div>
+            </div>
+            <div class="about-preview-content fade-in">
+                <div class="section-header left-header">
+                    <span class="label"><span></span>About Us</span>
+                </div>
+                <h2>Partnering with Companies & Communities for Sustainable Change</h2>
+                <p>In 2012, a small team set out with a simple belief: that every CSR rupee should translate into something a community can touch, feel, and own. Third Planet Foundation was born from that conviction — a Section 8 not-for-profit that partners with companies and communities to co-create development programmes that actually last.</p>
+                <p>Today, we provide end-to-end, Table-to-Field CSR services — from planning and execution to reporting — covering the complete lifecycle, aligned to Schedule VII, Section 135 of the Companies Act 2013 and the Sustainable Development Goals. But behind every compliance number is a village that got its first library, a woman who started her first enterprise, a child who stayed in school.</p>
+                <div class="about-features">
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> NITI Aayog Empanelled</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> GuideStar India</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> GeM Registered</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> MSME Certified</div>
+                </div>
+                <a href="/about" class="btn btn-secondary btn-sm">Learn More <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Programme Areas -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Focus Areas</span>
+            <h2>Our Programmes</h2>
+            <p>Working across diverse development themes aligned to Schedule VII and Sustainable Development Goals.</p>
+        </div>
+        <div class="program-grid">
+            {% for area in thematic_areas %}
+            <div class="program-card fade-in">
+                <img src="{{ area.image }}" alt="{{ area.title }}" loading="lazy">
+                <div class="program-card-overlay">
+                    <div class="program-card-icon" style="background: {{ area.color }};">
+                        <i class="fa {{ area.icon }}"></i>
+                    </div>
+                    <h3>{{ area.title }}</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Impact — Visual Banner -->
+<section class="impact-visual">
+    <div class="impact-visual-bg" style="background-image: url('{{ images.community }}');"></div>
+    <div class="impact-visual-overlay"></div>
+    <div class="container">
+        <div class="impact-visual-header fade-in">
+            <span class="label label-light">Our Impact</span>
+            <h2>Numbers That Tell Human Stories</h2>
+            <p>Behind every statistic is a family, a village, a life changed forever.</p>
+        </div>
+        <div class="impact-visual-grid fade-in">
+            <div class="impact-visual-item">
+                <div class="impact-visual-number" data-count="1000000" data-suffix="+">0</div>
+                <span class="impact-visual-label">Lives Impacted</span>
+                <p>From a girl attending school for the first time to a farmer saving his first harvest.</p>
+            </div>
+            <div class="impact-visual-item">
+                <div class="impact-visual-number" data-count="500" data-suffix="+">0</div>
+                <span class="impact-visual-label">Projects Delivered</span>
+                <p>Each one designed with the community, not just for them.</p>
+            </div>
+            <div class="impact-visual-item">
+                <div class="impact-visual-number" data-count="20" data-suffix="+">0</div>
+                <span class="impact-visual-label">States & UTs</span>
+                <p>Every state has its own challenges — and its own champions.</p>
+            </div>
+            <div class="impact-visual-item">
+                <div class="impact-visual-number" data-count="25" data-suffix="+">0</div>
+                <span class="impact-visual-label">Corporate Partners</span>
+                <p>Businesses that chose to invest in people, not just projects.</p>
+            </div>
+            <div class="impact-visual-item">
+                <div class="impact-visual-number" data-count="14" data-suffix="+">0</div>
+                <span class="impact-visual-label">Years of Service</span>
+                <p>A journey that started with one village and never looked back.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services — Editorial -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">What We Do</span>
+            <h2>Our Services</h2>
+            <p>End-to-end CSR solutions from policy formulation to impact reporting — we handle the complete lifecycle so you can focus on your core business.</p>
+        </div>
+        <div class="services-editorial">
+            {% for svc in services %}
+            <div class="service-editorial-item fade-in">
+                <div class="service-editorial-num">{{ "%02d" | format(loop.index) }}</div>
+                <div class="service-editorial-icon"><i class="fa {{ svc.icon }}"></i></div>
+                <div class="service-editorial-content">
+                    <h3>{{ svc.title }}</h3>
+                    <p>{{ svc.brief }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Our Reach — Compact Banner -->
+<section class="presence-banner">
+    <div class="presence-pattern"></div>
+    <div class="container">
+        <div class="presence-banner-content fade-in">
+            <div class="presence-banner-text">
+                <span class="label label-light">Our Reach</span>
+                <h2>Pan-India Presence</h2>
+                <p>Implementing impactful programmes across 20+ states and union territories through our extensive field network.</p>
+                <div class="presence-banner-stats">
+                    <div class="presence-banner-stat">
+                        <h3>20+</h3>
+                        <span>States</span>
+                    </div>
+                    <div class="presence-banner-stat">
+                        <h3>500+</h3>
+                        <span>Projects</span>
+                    </div>
+                    <div class="presence-banner-stat">
+                        <h3>1M+</h3>
+                        <span>Lives</span>
+                    </div>
+                </div>
+                <a href="/our-presence" class="btn btn-primary">Explore Our Presence <i class="fa fa-arrow-right"></i></a>
+            </div>
+            <div class="presence-banner-map">
+                <img src="/static/img/india-map.svg" alt="India Map" class="presence-banner-svg" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Our Work</span>
+            <h2>Featured Projects</h2>
+            <p>Impactful CSR implementations across India in partnership with leading organisations.</p>
+        </div>
+        <div class="grid grid-3">
+            {% for proj in projects %}
+            <a href="/project/{{ proj.slug }}" class="project-card fade-in">
+                <div class="project-card-img">
+                    <img src="{{ proj.image }}" alt="{{ proj.title }}" loading="lazy" onerror="this.src='/static/img/hampigirl4_1366.jpg';">
+                </div>
+                <div class="project-card-body">
+                    <span class="project-partner">{{ proj.partner }}</span>
+                    <h3>{{ proj.title }}</h3>
+                    <p>{{ proj.brief[:120] }}...</p>
+                    <span class="project-read-more">Read Full Story <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="section-cta">
+            <a href="/our-presence#projects-section" class="btn btn-secondary btn-sm">View All Projects <i class="fa fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Recognition — Horizontal Badges -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Recognition</span>
+            <h2>Accreditations & Registrations</h2>
+            <p>Trusted credentials that underline our commitment to transparency, compliance, and governance.</p>
+        </div>
+        <div class="credentials-strip fade-in">
+            <div class="credential-badge">
+                <div class="credential-icon"><i class="fa fa-university"></i></div>
+                <div class="credential-info">
+                    <h4>NITI Aayog — Darpan</h4>
+                    <p>Empanelled as a credible CSR implementation partner</p>
+                </div>
+            </div>
+            <div class="credential-badge">
+                <div class="credential-icon credential-icon-accent"><i class="fa fa-star"></i></div>
+                <div class="credential-info">
+                    <h4>GuideStar India</h4>
+                    <p>Platinum-level transparency certification</p>
+                </div>
+            </div>
+            <div class="credential-badge">
+                <div class="credential-icon credential-icon-warm"><i class="fa fa-shopping-cart"></i></div>
+                <div class="credential-info">
+                    <h4>GeM Registered</h4>
+                    <p>Government e-Marketplace vendor</p>
+                </div>
+            </div>
+            <div class="credential-badge">
+                <div class="credential-icon"><i class="fa fa-industry"></i></div>
+                <div class="credential-info">
+                    <h4>MSME Certified</h4>
+                    <p>Ministry of MSME registered</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Partners -->
+<section class="section partners-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">Trusted By</span>
+            <h2>Our Partners</h2>
+        </div>
+    </div>
+    <div class="partners-marquee fade-in">
+        <div class="marquee-track">
+            {% for partner in partners %}
+            <div class="partner-card">
+                {% if partner.logo %}
+                <img src="{{ partner.logo }}" alt="{{ partner.name }}" class="partner-logo" loading="lazy">
+                {% else %}
+                <div class="partner-initial" style="background: {{ partner.color }};">{{ partner.name[0] }}</div>
+                {% endif %}
+                <span>{{ partner.name }}</span>
+            </div>
+            {% endfor %}
+            {% for partner in partners %}
+            <div class="partner-card">
+                {% if partner.logo %}
+                <img src="{{ partner.logo }}" alt="{{ partner.name }}" class="partner-logo" loading="lazy">
+                {% else %}
+                <div class="partner-initial" style="background: {{ partner.color }};">{{ partner.name[0] }}</div>
+                {% endif %}
+                <span>{{ partner.name }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Story Spotlight -->
+<section class="section story-spotlight">
+    <div class="container">
+        <div class="spotlight-content fade-in">
+            <div class="spotlight-quote">
+                <i class="fa fa-quote-left"></i>
+                <blockquote>"When the Learning Lab opened in our village, my daughter was the first to enrol. Today she reads newspapers to her grandfather every morning. That small room changed our family's future."</blockquote>
+                <cite>— Sunita Devi, Mother & SHG Member, Rajasthan</cite>
+            </div>
+            <div class="spotlight-context">
+                <p>Stories like Sunita's are at the heart of everything we do. Across 20+ states, our programmes are not just projects — they are turning points in people's lives.</p>
+                <a href="/stories" class="btn btn-secondary btn-sm">Read More Stories <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-bg" style="background-image: url('{{ images.sdg }}');"></div>
+    <div class="container fade-in">
+        <h2>Let's Build Something Meaningful Together</h2>
+        <p>Behind every statistic is a family, a village, a future waiting to unfold. Your CSR investment can be the catalyst.</p>
+        <a href="/contact" class="btn btn-primary btn-lg">Get in Touch <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}
+

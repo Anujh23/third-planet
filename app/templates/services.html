@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %}CSR Services India — Full-Cycle Implementation{% endblock %}
+{% block meta_description %}End-to-end CSR services: policy formulation, need assessment, programme design, implementation, and impact reporting. Schedule VII aligned.{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/services" itemprop="item"><span itemprop="name">What We Do</span></a><meta itemprop="position" content="2"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Services</span><meta itemprop="position" content="3"></li>
+        </ol>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="background-image: url('/static/img/stock/agriculture.jpg');">
+    <div class="hero-pattern"></div>
+    <div class="container">
+        <h1>Our Services</h1>
+        <p>End-to-end CSR solutions — so you can focus on your business while we focus on impact</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="mission-split fade-in" style="margin-bottom: 50px; max-width: 1000px; margin-left: auto; margin-right: auto;">
+            <div class="mission-visual">
+                <img src="/static/img/gallery/Third_Planet Foundation_Social Impact_1.jpg" alt="TPF delivering CSR services across rural India" loading="lazy">
+            </div>
+            <div class="mission-text">
+                <span class="label">What We Offer</span>
+                <h2>Table-to-Field CSR Services</h2>
+                <p>From the boardroom to the village — we cover every step of the CSR lifecycle with expertise, transparency, and a deep commitment to the communities we serve.</p>
+            </div>
+        </div>
+        <div class="grid grid-3">
+            {% for svc in services %}
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fa {{ svc.icon }}"></i></div>
+                <h3>{{ svc.title }}</h3>
+                <p>{{ svc.brief }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container" style="max-width: 1000px;">
+        <div class="mission-split fade-in">
+            <div class="mission-text">
+                <span class="label" style="display:inline-flex; gap:8px; font-size:0.8rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:2.5px; margin-bottom:12px;">Why Us</span>
+                <h2>Why Partner With Third Planet Foundation</h2>
+                <p>We're not just consultants who hand over a report. We're an execution-first team that stays with a project from the first community meeting to the final impact assessment — and often beyond.</p>
+                <p>Our track record speaks through 500+ projects across 20+ states and union territories, backed by credentials that matter: NITI Aayog empanelment, GuideStar transparency certification, and the trust of 25+ corporate partners.</p>
+            </div>
+            <div>
+                <div style="display: grid; gap: 12px;">
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> Section 8 Not-for-Profit</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> 14+ Years of CSR Experience</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> Pan-India Field Presence</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> Schedule VII Compliance</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> NITI Aayog Empanelled</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> Direct Field Implementation</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> Measurable Impact & Reporting</div>
+                    <div class="about-feature"><i class="fa fa-check-circle"></i> Transparent Governance</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section">
+    <div class="container" style="max-width: 800px;">
+        <div class="section-header fade-in">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list fade-in" itemscope itemtype="https://schema.org/FAQPage">
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 itemprop="name" class="faq-question"><i class="fa fa-plus-circle"></i> What is Section 135 of the Companies Act?</h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text" class="faq-answer">
+                        <p>Section 135 requires companies with a net worth of Rs 500 crore or more, turnover of Rs 1,000 crore or more, or net profit of Rs 5 crore or more to spend at least 2% of their average net profit on CSR activities. Third Planet Foundation helps companies identify, design, implement, and report these programmes in compliance with Schedule VII.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 itemprop="name" class="faq-question"><i class="fa fa-plus-circle"></i> What thematic areas do you cover under Schedule VII?</h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text" class="faq-answer">
+                        <p>We implement programmes across education, healthcare, women empowerment, skill development, water & sanitation (WASH), rural development, environmental sustainability, and disaster management — all aligned to Schedule VII of the Companies Act 2013.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 itemprop="name" class="faq-question"><i class="fa fa-plus-circle"></i> How long does a typical CSR project take?</h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text" class="faq-answer">
+                        <p>Timelines vary by scope. A focused intervention (health camps, awareness drives) can be executed in 2-3 months. Multi-year programmes like education labs or livelihood development typically run 12-36 months. We provide detailed timelines during the proposal stage.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 itemprop="name" class="faq-question"><i class="fa fa-plus-circle"></i> Do you work across all Indian states?</h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text" class="faq-answer">
+                        <p>We have active presence in 20+ states and union territories. Our field teams operate in both urban and rural settings — from Delhi NCR to remote tribal blocks in Jharkhand, Chhattisgarh, and Rajasthan. <a href="/our-presence">View our presence map</a>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 itemprop="name" class="faq-question"><i class="fa fa-plus-circle"></i> How do you measure impact?</h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text" class="faq-answer">
+                        <p>Every programme follows a baseline → midline → endline assessment framework. We track both outputs (activities delivered) and outcomes (lives changed) using quantitative KPIs and qualitative community feedback. Corporate partners receive detailed impact reports with third-party verification where applicable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container fade-in">
+        <h2>Ready to Start Your CSR Programme?</h2>
+        <p>Tell us about your goals — we'll show you how to turn them into lasting community impact.</p>
+        <a href="/contact" class="btn btn-primary">Let's Talk <i class="fa fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}
