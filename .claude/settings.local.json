@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from app import create_app; app = create_app\\(\\); print\\(''App created successfully''\\)\")",
+      "Bash(find /c/Users/anujh/Desktop/Python/third-planet/app/templates -name *.html)"
+    ]
+  }
+}
