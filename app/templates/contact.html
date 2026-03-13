@@ -59,7 +59,7 @@
                 </div>
                 {% endif %}
 
-                <form method="post" action="/contact">
+                <form method="post" action="/contact" id="contact-form">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Full Name <span class="required">*</span></label>
@@ -84,7 +84,12 @@
                         <label>Your Message</label>
                         <textarea name="message" class="form-control" rows="5" placeholder="Tell us about your CSR goals and how we can help..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    <!-- Honeypot: bots fill this, humans don't see it -->
+                    <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="contact-submit" style="width: 100%; justify-content: center;">
                         Send Message <i class="fa fa-paper-plane"></i>
                     </button>
                 </form>

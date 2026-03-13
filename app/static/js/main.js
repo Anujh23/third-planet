@@ -2,13 +2,15 @@
    Third Planet Foundation — Main JS
    ══════════════════════════════════════════════════════════════ */
 
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.addEventListener('DOMContentLoaded', () => {
     // ── Sticky header ──────────────────────────────────────────
     const header = document.getElementById('site-header');
     if (header) {
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        }, { passive: true });
     }
 
     // ── Mobile nav toggle ──────────────────────────────────────
@@ -44,10 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (backToTop) {
         window.addEventListener('scroll', () => {
             backToTop.classList.toggle('visible', window.scrollY > 400);
-        });
+        }, { passive: true });
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+    }
+
+    // ── Hero crossfade carousel ────────────────────────────────
+    const heroBg = document.getElementById('hero-bg');
+    if (heroBg && !reducedMotion) {
+        let images;
+        try { images = JSON.parse(heroBg.dataset.images); } catch (_) {}
+        if (images && images.length > 1) {
+            // Preload all carousel images
+            images.slice(1).forEach(src => { const img = new Image(); img.src = src; });
+            let idx = 0;
+            setInterval(() => {
+                idx = (idx + 1) % images.length;
+                heroBg.style.opacity = '0';
+                setTimeout(() => {
+                    heroBg.style.backgroundImage = `url('${images[idx]}')`;
+                    heroBg.style.opacity = '0.45';
+                }, 900);
+            }, 6000);
+        }
     }
 
     // ── Scroll-reveal animation ────────────────────────────────
@@ -87,32 +109,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ── Counter animation ──────────────────────────────────────
+    // ── Counter animation (RAF + ease-out cubic) ───────────────
+
+    /**
+     * Formats a counter value for display.
+     * Numbers >= 1,000,000 are abbreviated to "1M", "2M", etc. to avoid
+     * locale-specific grouping bugs (e.g. Indian locale outputs "10,00,000").
+     * All other numbers use en-US locale for consistent comma-grouping.
+     */
+    function formatCounterValue(value) {
+        if (value >= 1000000) {
+            // Show whole millions; decimals only when animating through sub-million
+            const millions = value / 1000000;
+            return (Number.isInteger(millions) ? millions : millions.toFixed(1)) + 'M';
+        }
+        return value.toLocaleString('en-US');
+    }
+
     const counters = document.querySelectorAll('[data-count]');
     if (counters.length && 'IntersectionObserver' in window) {
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = parseInt(el.dataset.count, 10);
-                    const suffix = el.dataset.suffix || '';
-                    const duration = 2000;
-                    const step = target / (duration / 16);
-                    let current = 0;
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = parseInt(el.dataset.count, 10);
+                const suffix = el.dataset.suffix || '';
 
-                    const timer = setInterval(() => {
-                        current += step;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        el.textContent = Math.floor(current).toLocaleString() + suffix;
-                    }, 16);
-
+                // Respect reduced motion — show final value immediately
+                if (reducedMotion) {
+                    el.textContent = formatCounterValue(target) + suffix;
                     counterObserver.unobserve(el);
+                    return;
                 }
+
+                const baseDuration = 1800;
+                const magnitude = Math.log10(Math.max(target, 1));
+                const duration = Math.min(baseDuration + (magnitude - 2) * 600, 4000);
+                const start = performance.now();
+
+                function tick(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Ease-out cubic: decelerates toward the end
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(eased * target);
+                    el.textContent = formatCounterValue(current) + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+                counterObserver.unobserve(el);
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.4 });
 
         counters.forEach(el => counterObserver.observe(el));
     }
@@ -144,4 +191,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // ── Contact form loading state ─────────────────────────────
+    const contactForm = document.querySelector('form[action="/contact"]');
+    if (contactForm) {
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        contactForm.addEventListener('submit', () => {
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa fa-circle-o-notch fa-spin"></i> Sending…';
+            }
+        });
+    }
+
+    // ── Mobile sticky CTA — hide when footer is in view ────────
+    const stickyCta = document.getElementById('sticky-cta');
+    const siteFooter = document.querySelector('.site-footer');
+    if (stickyCta && siteFooter && 'IntersectionObserver' in window) {
+        const footerObserver = new IntersectionObserver(
+            ([entry]) => stickyCta.classList.toggle('hidden', entry.isIntersecting),
+            { threshold: 0 }
+        );
+        footerObserver.observe(siteFooter);
+    }
 });

@@ -16,14 +16,16 @@
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:title" content="{% block og_title %}{% endblock %}{% if not self.og_title() %}{{ self.title() }} | Third Planet Foundation{% endif %}">
     <meta property="og:description" content="{% block og_description %}{% endblock %}{% if not self.og_description() %}{{ self.meta_description() }}{% endif %}">
-    <meta property="og:image" content="{{ site.website }}/static/img/logo.png">
+    <meta property="og:image" content="{{ site.website }}{% block og_image %}/static/img/stock/hero.jpg{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="{{ site.website }}{{ request.url.path }}">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% block tw_title %}{% endblock %}{% if not self.tw_title() %}{{ self.title() }} | Third Planet Foundation{% endif %}">
     <meta name="twitter:description" content="{% block tw_description %}{% endblock %}{% if not self.tw_description() %}{{ self.meta_description() }}{% endif %}">
-    <meta name="twitter:image" content="{{ site.website }}/static/img/logo.png">
+    <meta name="twitter:image" content="{{ site.website }}{% block tw_image %}/static/img/stock/hero.jpg{% endblock %}">
 
     <!-- JSON-LD: Organization Schema -->
     <script type="application/ld+json">
@@ -77,6 +79,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
+    {% block preload %}{% endblock %}
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -110,20 +113,20 @@
                         </ul>
                     </li>
                     <li class="has-dropdown">
-                        <a href="/services">What We Do <i class="fa fa-angle-down"></i></a>
+                        <a href="#">What We Do <i class="fa fa-angle-down"></i></a>
                         <ul class="dropdown">
                             <li><a href="/services">Services</a></li>
                             <li><a href="/our-approach">Our Approach</a></li>
                             <li><a href="/our-process">Our Process</a></li>
-                            <li><a href="/stories">Impact Stories</a></li>
                         </ul>
                     </li>
                     <li><a href="/our-presence">Our Presence</a></li>
                     <li class="has-dropdown">
-                        <a href="#">Media <i class="fa fa-angle-down"></i></a>
+                        <a href="#">Insights <i class="fa fa-angle-down"></i></a>
                         <ul class="dropdown">
+                            <li><a href="/stories">Impact Stories</a></li>
+                            <li><a href="/reading-corner">Field Notes</a></li>
                             <li><a href="/gallery">Gallery</a></li>
-                            <li><a href="/reading-corner">Reading Corner</a></li>
                             <li><a href="/reports">Reports & Transparency</a></li>
                         </ul>
                     </li>
@@ -181,7 +184,7 @@
                         <h4>Quick Links</h4>
                         <ul>
                             <li><a href="/about">About Us</a></li>
-                            <li><a href="/services">What We Do</a></li>
+                            <li><a href="/services">Services</a></li>
                             <li><a href="/our-presence">Our Presence</a></li>
                             <li><a href="/stories">Impact Stories</a></li>
                             <li><a href="/partners">Partners</a></li>
@@ -232,6 +235,13 @@
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">
         <i class="fa fa-arrow-up"></i>
     </button>
+
+    <!-- Mobile Sticky CTA — hidden on desktop via CSS -->
+    <div class="sticky-cta-bar" id="sticky-cta" role="complementary" aria-label="Partner enquiry">
+        <a href="/contact" class="sticky-cta-btn">
+            <i class="fa fa-handshake-o"></i> Start a CSR Partnership
+        </a>
+    </div>
 
     <script src="/static/js/main.js"></script>
     {% block extra_js %}{% endblock %}

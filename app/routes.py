@@ -154,11 +154,6 @@ async def services(request: Request):
     return request.app.state.templates.TemplateResponse("services.html", ctx(request, services=SERVICES))
 
 
-@router.get("/projects")
-async def projects(request: Request):
-    return RedirectResponse(url="/our-presence#projects-section", status_code=301)
-
-
 @router.get("/project/{slug}", response_class=HTMLResponse)
 async def project_detail(request: Request, slug: str):
     project = next((p for p in PROJECTS if p["slug"] == slug), None)
@@ -168,11 +163,6 @@ async def project_detail(request: Request, slug: str):
     return request.app.state.templates.TemplateResponse("project-detail.html", ctx(
         request, project=project, related=related, external_refs=EXTERNAL_REFERENCES,
     ))
-
-
-@router.get("/social-media")
-async def social_media(request: Request):
-    return RedirectResponse(url="/", status_code=301)
 
 
 @router.get("/gallery", response_class=HTMLResponse)
@@ -198,7 +188,15 @@ async def contact_submit(
     phone: str = Form(""),
     subject: str = Form(""),
     message: str = Form(""),
+    website: str = Form(""),  # honeypot
 ):
+    # Reject silently if honeypot is filled (bot submission)
+    if website:
+        return request.app.state.templates.TemplateResponse("contact.html", ctx(
+            request,
+            success=True,
+            submitted_name=name,
+        ))
     return request.app.state.templates.TemplateResponse("contact.html", ctx(
         request,
         success=True,

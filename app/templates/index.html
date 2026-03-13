@@ -2,6 +2,10 @@
 {% block title %}CSR Implementation Partner India{% endblock %}
 {% block meta_description %}Trusted CSR implementation partner across 20+ Indian states since 2012. Education, healthcare, women empowerment — Section 8 nonprofit aligned to Schedule VII.{% endblock %}
 
+{% block preload %}
+<link rel="preload" as="image" href="/static/img/gallery/Third_Planet Foundation_Social Impact_1.jpg">
+{% endblock %}
+
 {% block extra_schema %}
 <script type="application/ld+json">
 {
@@ -17,7 +21,14 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="hero">
-    <div class="hero-bg" style="background-image: url('{{ images.hero }}');"></div>
+    <div class="hero-bg" id="hero-bg"
+         style="background-image: url('/static/img/gallery/Third_Planet Foundation_Social Impact_1.jpg');"
+         data-images='[
+           "/static/img/gallery/Third_Planet Foundation_Social Impact_1.jpg",
+           "/static/img/gallery/Third Planet Foundation_Quality Education and Learning1_www.3planet.org.jpg",
+           "/static/img/gallery/Third Planet Foundation_Quality Healthcare1_www.3planet.org.jpg",
+           "/static/img/gallery/Third Planet Foundation_Women Empowerment3.jpg"
+         ]'></div>
     <div class="hero-overlay"></div>
     <div class="hero-shape hero-shape-1"></div>
     <div class="hero-shape hero-shape-2"></div>
@@ -31,7 +42,16 @@
             <p>We are on the ground — in classrooms, health camps, and village squares — walking alongside communities as they build a better tomorrow. For over a decade, Third Planet Foundation has turned CSR commitments into real change you can see, hear, and feel.</p>
             <div class="hero-buttons">
                 <a href="/our-presence" class="btn btn-primary">Our Work <i class="fa fa-arrow-right"></i></a>
-                <a href="/contact" class="btn btn-outline">Partner With Us <i class="fa fa-handshake-o"></i></a>
+                <a href="/contact" class="btn btn-outline cta-pulse">Start a CSR Partnership <i class="fa fa-handshake-o"></i></a>
+            </div>
+            <p class="hero-trust-signal"><i class="fa fa-check-circle"></i> Trusted by Legrand, HSBC, Merck &amp; 25+ corporate partners</p>
+        </div>
+        <div class="hero-field-note fade-in" aria-label="Latest field update">
+            <div class="field-note-pulse"></div>
+            <div class="field-note-body">
+                <span class="field-note-tag">Live from the Field</span>
+                <p class="field-note-text">Learning Lab launched in Jalgaon — 120 children enrolled in Week 1</p>
+                <a href="/stories" class="field-note-link">Read the story <i class="fa fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -155,29 +175,29 @@
         </div>
         <div class="impact-visual-grid fade-in">
             <div class="impact-visual-item">
+                <i class="fa fa-users impact-visual-icon" aria-hidden="true"></i>
                 <div class="impact-visual-number" data-count="1000000" data-suffix="+">0</div>
                 <span class="impact-visual-label">Lives Impacted</span>
-                <p>From a girl attending school for the first time to a farmer saving his first harvest.</p>
             </div>
             <div class="impact-visual-item">
+                <i class="fa fa-check-square-o impact-visual-icon" aria-hidden="true"></i>
                 <div class="impact-visual-number" data-count="500" data-suffix="+">0</div>
                 <span class="impact-visual-label">Projects Delivered</span>
-                <p>Each one designed with the community, not just for them.</p>
             </div>
             <div class="impact-visual-item">
+                <i class="fa fa-map-marker impact-visual-icon" aria-hidden="true"></i>
                 <div class="impact-visual-number" data-count="20" data-suffix="+">0</div>
-                <span class="impact-visual-label">States & UTs</span>
-                <p>Every state has its own challenges — and its own champions.</p>
+                <span class="impact-visual-label">States &amp; UTs</span>
             </div>
             <div class="impact-visual-item">
+                <i class="fa fa-handshake-o impact-visual-icon" aria-hidden="true"></i>
                 <div class="impact-visual-number" data-count="25" data-suffix="+">0</div>
                 <span class="impact-visual-label">Corporate Partners</span>
-                <p>Businesses that chose to invest in people, not just projects.</p>
             </div>
             <div class="impact-visual-item">
+                <i class="fa fa-calendar impact-visual-icon" aria-hidden="true"></i>
                 <div class="impact-visual-number" data-count="14" data-suffix="+">0</div>
                 <span class="impact-visual-label">Years of Service</span>
-                <p>A journey that started with one village and never looked back.</p>
             </div>
         </div>
     </div>
@@ -345,15 +365,24 @@
 <!-- Story Spotlight -->
 <section class="section story-spotlight">
     <div class="container">
-        <div class="spotlight-content fade-in">
-            <div class="spotlight-quote">
-                <i class="fa fa-quote-left"></i>
-                <blockquote>"When the Learning Lab opened in our village, my daughter was the first to enrol. Today she reads newspapers to her grandfather every morning. That small room changed our family's future."</blockquote>
-                <cite>— Sunita Devi, Mother & SHG Member, Rajasthan</cite>
+        <div class="spotlight-split">
+            <div class="spotlight-photo fade-in-left">
+                <img src="/static/img/gallery/Third Planet Foundation_Quality Education and Learning3_www.3planet.org.jpg"
+                     alt="A child reading in a Third Planet Foundation Learning Lab, Rajasthan"
+                     loading="lazy">
+                <div class="spotlight-photo-caption">Learning Lab — Rajasthan, 2024</div>
             </div>
-            <div class="spotlight-context">
-                <p>Stories like Sunita's are at the heart of everything we do. Across 20+ states, our programmes are not just projects — they are turning points in people's lives.</p>
-                <a href="/stories" class="btn btn-secondary btn-sm">Read More Stories <i class="fa fa-arrow-right"></i></a>
+            <div class="spotlight-content fade-in-right">
+                <span class="label">Field Story</span>
+                <div class="spotlight-quote">
+                    <i class="fa fa-quote-left"></i>
+                    <blockquote>"When the Learning Lab opened in our village, my daughter was the first to enrol. Today she reads newspapers to her grandfather every morning. That small room changed our family's future."</blockquote>
+                    <cite>— Sunita Devi, Mother & SHG Member, Rajasthan</cite>
+                </div>
+                <div class="spotlight-context">
+                    <p>Stories like Sunita's are at the heart of everything we do. Across 20+ states, our programmes are not just projects — they are turning points in people's lives.</p>
+                    <a href="/stories" class="btn btn-secondary btn-sm">Read More Stories <i class="fa fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -365,7 +394,14 @@
     <div class="container fade-in">
         <h2>Let's Build Something Meaningful Together</h2>
         <p>Behind every statistic is a family, a village, a future waiting to unfold. Your CSR investment can be the catalyst.</p>
-        <a href="/contact" class="btn btn-primary btn-lg">Get in Touch <i class="fa fa-arrow-right"></i></a>
+        <a href="/contact" class="btn btn-primary btn-lg">Start a CSR Partnership <i class="fa fa-arrow-right"></i></a>
+        <div class="cta-trust-line">
+            <span class="cta-trust-badge"><i class="fa fa-shield"></i> Section 8 NGO</span>
+            <span class="cta-trust-sep">·</span>
+            <span class="cta-trust-badge"><i class="fa fa-star"></i> GuideStar Platinum</span>
+            <span class="cta-trust-sep">·</span>
+            <span class="cta-trust-badge"><i class="fa fa-university"></i> NITI Aayog Empanelled</span>
+        </div>
     </div>
 </section>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}CSR Services India — Full-Cycle Implementation{% endblock %}
-{% block meta_description %}End-to-end CSR services: policy formulation, need assessment, programme design, implementation, and impact reporting. Schedule VII aligned.{% endblock %}
+{% block title %}CSR Implementation Partner India — Full-Cycle Services | Third Planet Foundation{% endblock %}
+{% block meta_description %}Third Planet Foundation is a leading CSR implementation partner in India. We offer end-to-end CSR services — need assessment, programme design, field execution, social impact assessment, and Schedule VII reporting.{% endblock %}
 
 {% block breadcrumb %}
 <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -18,8 +18,8 @@
 <section class="page-hero" style="background-image: url('/static/img/stock/agriculture.jpg');">
     <div class="hero-pattern"></div>
     <div class="container">
-        <h1>Our Services</h1>
-        <p>End-to-end CSR solutions — so you can focus on your business while we focus on impact</p>
+        <h1>From Policy to Field: End-to-End CSR That Works</h1>
+        <p>We handle every stage of the CSR lifecycle — so your compliance is airtight and your communities feel the difference</p>
     </div>
 </section>
 
@@ -37,10 +37,15 @@
         </div>
         <div class="grid grid-3">
             {% for svc in services %}
-            <div class="service-card fade-in">
-                <div class="service-icon"><i class="fa {{ svc.icon }}"></i></div>
-                <h3>{{ svc.title }}</h3>
-                <p>{{ svc.brief }}</p>
+            <div class="service-card service-card--visual fade-in">
+                {% if svc.image %}
+                <div class="service-card-img" style="background-image: url('{{ svc.image }}');" role="img" aria-label="{{ svc.title }}"></div>
+                {% endif %}
+                <div class="service-card-body">
+                    <div class="service-icon"><i class="fa {{ svc.icon }}"></i></div>
+                    <h3>{{ svc.title }}</h3>
+                    <p>{{ svc.brief }}</p>
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -127,7 +132,7 @@
     <div class="container fade-in">
         <h2>Ready to Start Your CSR Programme?</h2>
         <p>Tell us about your goals — we'll show you how to turn them into lasting community impact.</p>
-        <a href="/contact" class="btn btn-primary">Let's Talk <i class="fa fa-arrow-right"></i></a>
+        <a href="/contact" class="btn btn-primary">Discuss Your CSR Programme <i class="fa fa-arrow-right"></i></a>
     </div>
 </section>
 {% endblock %}

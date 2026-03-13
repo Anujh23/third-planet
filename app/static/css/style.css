@@ -1293,15 +1293,52 @@ h4 { font-size: 1.25rem; letter-spacing: -0.01em; }
 }
 
 .story-category h3 {
-    font-size: 1.5rem;
-    margin-bottom: 24px;
+    font-size: 1.4rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--text-dark);
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 0;
+}
+
+.story-category h3::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 1.5em;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.story-category h3::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    display: block;
 }
 
 .story-category h3 i {
+    display: none;
+}
+
+.story-category-pill {
+    font-size: 0.65rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     color: var(--primary);
+    background: var(--primary-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-left: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .story-grid {
@@ -1841,6 +1878,12 @@ textarea.form-control {
     max-width: 550px;
     margin: 0 auto 36px;
     line-height: 1.8;
+}
+
+.cta-section .btn-lg {
+    padding: 15px 36px;
+    min-width: 220px;
+    max-width: 320px;
 }
 
 /* ── Content Pages ─────────────────────────────────────────── */
@@ -2442,15 +2485,37 @@ textarea.form-control {
 
 .impact-visual-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    /* 5 equal columns — min 160px prevents overflow on narrow viewports */
+    grid-template-columns: repeat(5, minmax(160px, 1fr));
     gap: 0;
+    /* allow the grid to scroll horizontally only if the viewport is extremely narrow;
+       normal responsive breakpoints below handle the real layout changes */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .impact-visual-item {
     text-align: center;
-    padding: 32px 20px;
+    padding: 40px 24px 36px;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
-    transition: var(--transition);
+    transition: background 0.25s ease, transform 0.25s ease;
+    position: relative;
+    /* accent top-bar — hidden by default, revealed on hover */
+    overflow: hidden;
+}
+
+/* Amber accent bar slides in from top on hover */
+.impact-visual-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 48px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 0 0 2px 2px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .impact-visual-item:last-child {
@@ -2458,33 +2523,53 @@ textarea.form-control {
 }
 
 .impact-visual-item:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-3px);
+}
+
+.impact-visual-item:hover::before {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Icon treatment — small decorative icon above the number */
+.impact-visual-icon {
+    display: block;
+    font-size: 1.25rem;
+    color: rgba(212, 168, 83, 0.55);  /* muted amber */
+    margin-bottom: 14px;
+    line-height: 1;
+    transition: color 0.25s ease;
+}
+
+.impact-visual-item:hover .impact-visual-icon {
+    color: var(--accent);
 }
 
 .impact-visual-number {
-    font-size: 3rem;
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
     font-family: var(--font-body);
     font-weight: 800;
     color: #fff;
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    /* letter-spacing tightened so large numbers don't feel spaced apart */
+    letter-spacing: -0.03em;
+    display: block;
 }
 
 .impact-visual-label {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-weight: 700;
     color: var(--accent);
-    margin-bottom: 12px;
+    /* no bottom margin — description text removed; keeps vertical rhythm tight */
 }
 
+/* Description text removed from the grid — see .impact-visual-item p below */
 .impact-visual-item p {
-    font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.55);
-    line-height: 1.6;
-    font-style: italic;
+    display: none;
 }
 
 .label-light {
@@ -3187,12 +3272,18 @@ textarea.form-control {
 
 .spotlight-quote blockquote {
     font-family: var(--font-heading);
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     line-height: 1.7;
     color: var(--text-dark);
     font-style: italic;
     margin: 0;
     padding-top: 20px;
+}
+
+/* Tighter size in the split layout where the column is narrower */
+.spotlight-split .spotlight-quote blockquote {
+    font-size: 1.05rem;
+    line-height: 1.65;
 }
 
 .spotlight-quote cite {
@@ -3603,7 +3694,7 @@ textarea.form-control {
 }
 
 .story-featured {
-    background: var(--primary);
+    background: linear-gradient(135deg, #3d6b4a 0%, var(--primary) 55%, #5a8f6a 100%);
     border-radius: var(--radius-lg);
     padding: 48px;
     color: #fff;
@@ -3612,6 +3703,20 @@ textarea.form-control {
     gap: 40px;
     align-items: center;
     margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-featured::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
 }
 
 .story-featured h3 {
@@ -3627,9 +3732,106 @@ textarea.form-control {
 }
 
 .story-featured-icon {
-    font-size: 3rem;
-    opacity: 0.3;
-    margin-bottom: 16px;
+    font-size: 3.5rem;
+    opacity: 0.15;
+    color: var(--accent);
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.story-stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 3px solid var(--accent);
+    padding: 24px 28px;
+    border-radius: var(--radius);
+    backdrop-filter: blur(6px);
+}
+
+.story-stat-card + .story-stat-card {
+    margin-top: 16px;
+    border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+.story-stat-num {
+    font-size: 2.6rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.story-stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.4;
+}
+
+/* ── Stories Stats Bar ─────────────────────────────────────── */
+.stories-stats-bar {
+    background: #fff;
+    border-top: 3px solid var(--primary);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.stories-stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
+
+.stories-stat {
+    padding: 36px 20px 32px;
+    border-right: 1px solid var(--border);
+    position: relative;
+}
+
+.stories-stat:last-child {
+    border-right: none;
+}
+
+.stories-stat::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+}
+
+.stories-stat:hover::after {
+    width: 40px;
+}
+
+.stories-stat-num {
+    font-size: 2.4rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stories-stat-label {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .stories-stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stories-stat:nth-child(2) { border-right: none; }
+    .stories-stat:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+    .stories-stat:nth-child(4) { border-top: 1px solid var(--border); }
 }
 
 /* ── Project Card Link & Read More ────────────────────────── */
@@ -3954,8 +4156,18 @@ a.project-card {
     .credential-badge:nth-child(2) { border-right: none; }
     .credential-badge:nth-child(1),
     .credential-badge:nth-child(2) { border-bottom: 1px solid var(--border); }
-    .impact-visual-grid { grid-template-columns: repeat(3, 1fr); }
-    .impact-visual-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    /* 3-col at tablet: cols 4+5 wrap cleanly to a second row */
+    .impact-visual-grid {
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+    }
+    .impact-visual-item {
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    /* Remove right-border for last item in each row */
+    .impact-visual-item:nth-child(3n) { border-right: none; }
+    .impact-visual-item:last-child { border-right: none; }
     .highlight-grid { grid-template-columns: repeat(2, 1fr); }
     .social-grid { grid-template-columns: repeat(2, 1fr); }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -4078,8 +4290,24 @@ a.project-card {
     /* Impact Visual */
     .impact-visual { padding: 70px 0; }
     .impact-visual-bg { background-attachment: scroll; }
-    .impact-visual-grid { grid-template-columns: repeat(2, 1fr); }
-    .impact-visual-item { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    /* 2-col on mobile: 2+2+1 stacking, last item full-width */
+    .impact-visual-grid {
+        grid-template-columns: repeat(2, 1fr);
+        overflow-x: visible;
+    }
+    .impact-visual-item {
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* disable hover lift on touch devices */
+        transform: none !important;
+    }
+    .impact-visual-item:nth-child(2n) { border-right: none; }
+    .impact-visual-item:last-child {
+        /* Span both columns so the odd-one-out stat is centered */
+        grid-column: 1 / -1;
+        border-right: none;
+        border-bottom: none;
+    }
     .impact-visual-number { font-size: 2.2rem; }
 
     /* Services Editorial */
@@ -4399,9 +4627,10 @@ a.project-card {
     border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid var(--border);
+    border-left: 4px solid transparent;
     margin-bottom: 56px;
     box-shadow: var(--shadow-lg);
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.2s ease;
     text-decoration: none;
     color: inherit;
 }
@@ -4409,6 +4638,7 @@ a.project-card {
 .blog-hero-card:hover {
     box-shadow: var(--shadow-xl);
     transform: translateY(-4px);
+    border-left-color: var(--accent);
 }
 
 .blog-hero-img {
@@ -4444,10 +4674,11 @@ a.project-card {
 }
 
 .blog-hero-body {
-    padding: 52px 48px;
+    padding: 48px 44px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    min-height: 380px;
 }
 
 .blog-hero-label {
@@ -4530,18 +4761,20 @@ a.project-card {
 /* ── Mixed-Layout Blog Grid ────────────────────────────────── */
 .blog-grid-mixed {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 28px;
-    margin-bottom: 28px;
-}
-
-.blog-grid-mixed .blog-card:first-child {
-    grid-row: span 2;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 40px;
 }
 
 .blog-grid-mixed .blog-card:first-child .blog-card-img {
-    height: 300px;
+    height: 340px;
+}
+
+.blog-horiz-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 /* Horizontal mini card */
@@ -4563,34 +4796,45 @@ a.project-card {
 }
 
 .blog-card-horiz .blog-card-img {
-    width: 130px;
-    min-width: 130px;
-    height: auto;
+    width: 110px;
+    min-width: 110px;
+    height: 110px;
     flex-shrink: 0;
 }
 
 .blog-card-horiz .blog-card-img img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .blog-card-horiz .blog-card-body {
-    padding: 18px 20px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .blog-card-horiz .blog-card-body h3 {
-    font-size: 0.97rem;
+    font-size: 0.9rem;
     line-height: 1.35;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+}
+
+.blog-card-horiz .blog-date {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.blog-card-horiz .reading-time {
+    font-size: 0.7rem;
 }
 
 /* Row of remaining blogs */
 .blog-grid-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 28px;
 }
 
@@ -4939,6 +5183,7 @@ a.project-card {
 
 /* ── Responsive: Reading Corner ───────────────────────────── */
 @media (max-width: 900px) {
+    .story-grid { grid-template-columns: repeat(2, 1fr); }
     .blog-hero-card {
         grid-template-columns: 1fr;
     }
@@ -4952,11 +5197,10 @@ a.project-card {
         font-size: 1.5rem;
     }
     .blog-grid-mixed {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
-    .blog-grid-mixed .blog-card:first-child {
-        grid-column: span 2;
-        grid-row: span 1;
+    .blog-grid-mixed .blog-card:first-child .blog-card-img {
+        height: 240px;
     }
     .blog-grid-row {
         grid-template-columns: 1fr 1fr;
@@ -4966,9 +5210,6 @@ a.project-card {
 @media (max-width: 600px) {
     .blog-grid-mixed {
         grid-template-columns: 1fr;
-    }
-    .blog-grid-mixed .blog-card:first-child {
-        grid-column: span 1;
     }
     .blog-grid-row {
         grid-template-columns: 1fr;
@@ -5248,5 +5489,470 @@ a.project-card:focus-visible,
 @media (min-width: 769px) and (max-width: 1024px) {
     .container {
         padding: 0 32px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Production Enhancements — Alex Rivera Design Audit
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Hero bg crossfade transition ─────────────────────────── */
+.hero-bg {
+    transition: opacity 0.9s ease;
+}
+
+/* ── CTA Pulse (one-shot on page load) ────────────────────── */
+.cta-pulse {
+    animation: ctaPulse 2s ease 1.2s 1 forwards;
+}
+
+@keyframes ctaPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5); }
+    50%  { box-shadow: 0 0 0 14px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* ── Hero trust signal ────────────────────────────────────── */
+.hero-trust-signal {
+    margin-top: 16px;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-trust-signal .fa {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+/* ── CTA section trust line ───────────────────────────────── */
+.cta-trust-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 12px;
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.02em;
+}
+
+.cta-trust-badge {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cta-trust-badge .fa {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.cta-trust-sep {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+/* ── Mobile Sticky CTA Bar ────────────────────────────────── */
+.sticky-cta-bar {
+    display: none; /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+    .sticky-cta-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        padding: 12px 16px;
+        background: #fff;
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+    }
+
+    .sticky-cta-bar.hidden {
+        transform: translateY(100%);
+    }
+
+    .sticky-cta-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 20px;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        min-height: 44px;
+        transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .sticky-cta-btn:hover {
+        background: var(--primary-dark);
+        color: #fff;
+    }
+
+    .sticky-cta-btn:active {
+        transform: scale(0.97);
+    }
+
+    /* Push page content up so sticky bar doesn't overlap footer links */
+    body {
+        padding-bottom: 72px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SERVICE CARDS — Visual Image Headers
+   ══════════════════════════════════════════════════════════════ */
+
+.service-card--visual {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card-img {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.service-card--visual:hover .service-card-img {
+    transform: scale(1.04);
+}
+
+.service-card-body {
+    padding: 20px 22px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Icon sits at top of card body — clearly associated with text, not buried in photo */
+.service-card--visual .service-icon {
+    margin-bottom: 12px;
+}
+
+.service-card-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.service-card-body p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   STORY CARDS — Image Header (matching blog card pattern)
+   ══════════════════════════════════════════════════════════════ */
+
+.story-card--img {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-card--img .story-card-img {
+    height: 235px;
+    overflow: hidden;
+    position: relative;
+}
+
+.story-card--img .story-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.story-card--img:hover .story-card-img img {
+    transform: scale(1.05);
+}
+
+.story-card--img .story-card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+.story-card-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    background: transparent;
+    color: #fff;
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    z-index: 1;
+}
+
+.story-card--img .story-card-body {
+    padding: 18px 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-card--img .story-icon {
+    width: 34px;
+    height: 34px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.story-card--img .story-card-body::after {
+    content: 'Read story \2192';
+    display: block;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.story-card--img:hover .story-card-body::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .story-card--img .story-card-body::after { transition: none; }
+}
+
+.story-theme {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.story-card--img h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.story-card--img p {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.65;
+    flex: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE-HERO — Ken Burns zoom animation
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes kbZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+}
+
+.page-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    animation: kbZoom 12s ease-in-out infinite alternate;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HERO FIELD-NOTE CARD
+   ══════════════════════════════════════════════════════════════ */
+
+.hero-field-note {
+    position: absolute;
+    bottom: 90px;
+    right: 40px;
+    background: rgba(255,255,255,0.96);
+    border-radius: 12px;
+    padding: 14px 18px 14px 16px;
+    max-width: 280px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    backdrop-filter: blur(6px);
+    border-left: 4px solid var(--primary);
+    z-index: 5;
+}
+
+.field-note-pulse {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    border-radius: 50%;
+    background: #2ecc71;
+    margin-top: 5px;
+    box-shadow: 0 0 0 0 rgba(46,204,113,0.4);
+    animation: fieldPulse 2s infinite;
+}
+
+@keyframes fieldPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(46,204,113,0.4); }
+    70%  { box-shadow: 0 0 0 8px rgba(46,204,113,0); }
+    100% { box-shadow: 0 0 0 0 rgba(46,204,113,0); }
+}
+
+.field-note-body {
+    flex: 1;
+}
+
+.field-note-tag {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.field-note-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.4;
+    margin: 0 0 6px 0;
+}
+
+.field-note-link {
+    font-size: 0.78rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.field-note-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .hero-field-note {
+        display: none;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   STORY SPOTLIGHT — Photo Split Layout
+   ══════════════════════════════════════════════════════════════ */
+
+.spotlight-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Override the old .spotlight-content grid — it was a 2-col grid wrapper,
+   but inside .spotlight-split it must be a simple flex column */
+.spotlight-split .spotlight-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.spotlight-photo {
+    position: relative;
+    border-radius: var(--radius-lg, 16px);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.spotlight-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.spotlight-photo:hover img {
+    transform: scale(1.03);
+}
+
+.spotlight-photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    color: rgba(255,255,255,0.9);
+    font-size: 0.78rem;
+    font-style: italic;
+    padding: 20px 14px 10px;
+}
+
+@media (max-width: 900px) {
+    .spotlight-split {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .spotlight-photo {
+        aspect-ratio: 16/9;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta-pulse {
+        animation: none;
+    }
+    .sticky-cta-bar {
+        transition: none;
+    }
+    .hero-bg {
+        transition: none;
+    }
+    .page-hero {
+        animation: none;
+    }
+    .field-note-pulse {
+        animation: none;
+    }
+    .service-card--visual:hover .service-card-img,
+    .spotlight-photo:hover img {
+        transform: none;
     }
 }

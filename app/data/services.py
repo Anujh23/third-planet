@@ -4,31 +4,37 @@ SERVICES = [
     {
         "title": "CSR Implementation",
         "icon": "fa-cogs",
+        "image": "/static/img/gallery/Third_Planet Foundation_Social Impact_1.jpg",
         "brief": "End-to-end execution of CSR projects across India — from planning and mobilisation to delivery and reporting.",
     },
     {
         "title": "CSR Advisory",
         "icon": "fa-lightbulb-o",
+        "image": "/static/img/stock/community.jpg",
         "brief": "Strategic guidance on CSR policy formulation, compliance, and programme design aligned with Schedule VII.",
     },
     {
         "title": "Need Assessment & Baseline",
         "icon": "fa-search",
+        "image": "/static/img/gallery/Third_Planet Foundation_Social Impact_5.jpg",
         "brief": "Data-driven community diagnostics, baseline surveys, and gap analyses to shape high-impact interventions.",
     },
     {
         "title": "Social Impact Assessment",
         "icon": "fa-bar-chart",
+        "image": "/static/img/gallery/Third_Planet Foundation_Social Impact_8.jpg",
         "brief": "Independent evaluations, social audits, and impact reports that demonstrate measurable outcomes.",
     },
     {
         "title": "Monitoring & Evaluation",
         "icon": "fa-line-chart",
+        "image": "/static/img/gallery/Third_Planet Foundation_Social Impact_7.jpg",
         "brief": "Robust M&E frameworks with real-time dashboards, field reviews, and third-party validations.",
     },
     {
         "title": "CSR Reporting",
         "icon": "fa-file-text-o",
+        "image": "/static/img/stock/education.jpg",
         "brief": "Comprehensive documentation and statutory reporting compliant with Companies Act 2013 guidelines.",
     },
 ]

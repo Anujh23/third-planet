@@ -7,8 +7,7 @@
     <div class="container">
         <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/services" itemprop="item"><span itemprop="name">What We Do</span></a><meta itemprop="position" content="2"></li>
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Impact Stories</span><meta itemprop="position" content="3"></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Impact Stories</span><meta itemprop="position" content="2"></li>
         </ol>
     </div>
 </nav>
@@ -19,7 +18,7 @@
     <div class="hero-pattern"></div>
     <div class="container">
         <h1>Stories of Impact</h1>
-        <p>Behind every number is a name. Behind every project is a life changed.</p>    </div>
+        <p>Behind every number is a name. Here are some of them.</p>    </div>
 </section>
 
 <!-- Featured Story -->
@@ -32,30 +31,37 @@
                 <p>In a drought-prone block of Rajasthan, families were packing up for seasonal migration — again. TPF restored twelve traditional ponds: de-silting, reinforcing bunds, and training village maintenance committees. Two years later, our team returned to find the committees still active — collecting user fees, maintaining catchments, and managing repairs entirely on their own. The village didn't just get water. It got ownership.</p>
             </div>
             <div style="display: flex; flex-direction: column; justify-content: center;">
-                <div style="background: rgba(255,255,255,0.1); padding: 28px; border-radius: 12px;">
-                    <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 4px;">12</div>
-                    <div style="opacity: 0.8; font-size: 0.9rem;">Traditional Ponds Restored</div>
+                <div class="story-stat-card">
+                    <div class="story-stat-num">12</div>
+                    <div class="story-stat-label">Traditional Ponds Restored</div>
                 </div>
-                <div style="background: rgba(255,255,255,0.1); padding: 28px; border-radius: 12px; margin-top: 16px;">
-                    <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 4px;">2 yrs</div>
-                    <div style="opacity: 0.8; font-size: 0.9rem;">Community Self-Management & Counting</div>
+                <div class="story-stat-card">
+                    <div class="story-stat-num">2 yrs</div>
+                    <div class="story-stat-label">Community Self-Management &amp; Counting</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section">
+<section class="stories-stats-bar">
     <div class="container">
-        <div class="grid grid-3 fade-in" style="margin-bottom: 50px;">
-            <div style="border-radius: var(--radius); overflow: hidden;">
-                <img src="/static/img/gallery/Third_Planet Foundation_Social Impact_2.jpg" alt="Community outreach and development" loading="lazy" style="width:100%; height:220px; object-fit:cover;">
+        <div class="stories-stats-inner">
+            <div class="stories-stat">
+                <div class="stories-stat-num">40+</div>
+                <div class="stories-stat-label">Districts Reached</div>
             </div>
-            <div style="border-radius: var(--radius); overflow: hidden;">
-                <img src="/static/img/gallery/Third Planet Foundation_Quality Education and Learning4_www.3planet.org.jpg" alt="Education programmes for children" loading="lazy" style="width:100%; height:220px; object-fit:cover;">
+            <div class="stories-stat">
+                <div class="stories-stat-num">1M+</div>
+                <div class="stories-stat-label">Lives Impacted</div>
             </div>
-            <div style="border-radius: var(--radius); overflow: hidden;">
-                <img src="/static/img/gallery/Third Planet Foundation_Women Empowerment6.jpg" alt="Women empowerment and livelihood" loading="lazy" style="width:100%; height:220px; object-fit:cover;">
+            <div class="stories-stat">
+                <div class="stories-stat-num">14 yrs</div>
+                <div class="stories-stat-label">On the Ground</div>
+            </div>
+            <div class="stories-stat">
+                <div class="stories-stat-num">3</div>
+                <div class="stories-stat-label">Farmers<br>Women<br>Communities</div>
             </div>
         </div>
     </div>
@@ -63,15 +69,28 @@
 
 <section class="section section-alt">
     <div class="container">
+        <div class="story-section-intro fade-in">
+            <p>From Maharashtra farms to Rajasthan villages — real stories of people whose lives changed because a programme reached them.</p>
+        </div>
+
         <!-- Farmers Stories -->
         <div class="story-category fade-in">
-            <h3><i class="fa fa-pagelines"></i> Farmers' Stories</h3>
+            <h3><span>From the Farm</span><span class="story-category-pill">Agriculture</span></h3>
             <div class="story-grid">
                 {% for story in stories.farmers %}
-                <div class="story-card">
-                    <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
-                    <h4>{{ story.title }}</h4>
-                    <p>{{ story.brief }}</p>
+                <div class="story-card story-card--img">
+                    <div class="story-card-img">
+                        <img src="{{ story.image }}" alt="{{ story.title }}" loading="lazy">
+                        <div class="story-card-tag">
+                            <i class="fa fa-map-marker"></i> {{ story.location }}
+                        </div>
+                    </div>
+                    <div class="story-card-body">
+                        <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
+                        <h4>{{ story.title }}</h4>
+                        <span class="story-theme">{{ story.theme }}</span>
+                        <p>{{ story.brief }}</p>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
@@ -79,13 +98,22 @@
 
         <!-- Women Stories -->
         <div class="story-category fade-in">
-            <h3><i class="fa fa-female"></i> Women's Stories</h3>
+            <h3><span>Women Leading</span><span class="story-category-pill">Livelihoods</span></h3>
             <div class="story-grid">
                 {% for story in stories.women %}
-                <div class="story-card">
-                    <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
-                    <h4>{{ story.title }}</h4>
-                    <p>{{ story.brief }}</p>
+                <div class="story-card story-card--img">
+                    <div class="story-card-img">
+                        <img src="{{ story.image }}" alt="{{ story.title }}" loading="lazy">
+                        <div class="story-card-tag">
+                            <i class="fa fa-map-marker"></i> {{ story.location }}
+                        </div>
+                    </div>
+                    <div class="story-card-body">
+                        <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
+                        <h4>{{ story.title }}</h4>
+                        <span class="story-theme">{{ story.theme }}</span>
+                        <p>{{ story.brief }}</p>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
@@ -93,13 +121,22 @@
 
         <!-- Communities Stories -->
         <div class="story-category fade-in">
-            <h3><i class="fa fa-home"></i> Community Stories</h3>
+            <h3><span>Villages That Stayed</span><span class="story-category-pill">Infrastructure</span></h3>
             <div class="story-grid">
                 {% for story in stories.communities %}
-                <div class="story-card">
-                    <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
-                    <h4>{{ story.title }}</h4>
-                    <p>{{ story.brief }}</p>
+                <div class="story-card story-card--img">
+                    <div class="story-card-img">
+                        <img src="{{ story.image }}" alt="{{ story.title }}" loading="lazy">
+                        <div class="story-card-tag">
+                            <i class="fa fa-map-marker"></i> {{ story.location }}
+                        </div>
+                    </div>
+                    <div class="story-card-body">
+                        <div class="story-icon"><i class="fa {{ story.icon }}"></i></div>
+                        <h4>{{ story.title }}</h4>
+                        <span class="story-theme">{{ story.theme }}</span>
+                        <p>{{ story.brief }}</p>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
@@ -110,7 +147,7 @@
 <section class="cta-section">
     <div class="container fade-in">
         <h2>Every Story Begins With a Partnership</h2>
-        <p>Your CSR investment doesn't just fund programmes — it writes life-changing stories.</p>
+        <p>Your CSR investment doesn't just fund programmes — it puts real names behind your numbers.</p>
         <a href="/contact" class="btn btn-primary">Partner With Us <i class="fa fa-arrow-right"></i></a>
     </div>
 </section>
