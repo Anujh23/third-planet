@@ -41,8 +41,6 @@ third-planet/
 │       ├── css/style.css    # Main stylesheet
 │       ├── js/main.js       # Client-side interactions
 │       └── img/             # Images (stock/, gallery/, logos)
-├── .claude/
-│   └── agents/              # AI agent definitions for development workflow
 ├── requirements.txt
 ├── run.py                   # Development server entry point
 └── README.md
