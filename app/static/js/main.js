@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ── Scroll-reveal animation ────────────────────────────────
-    const fadeEls = document.querySelectorAll('.fade-in');
+    const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-scale');
     if (fadeEls.length && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

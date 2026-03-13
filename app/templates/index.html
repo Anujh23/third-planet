@@ -2,6 +2,18 @@
 {% block title %}CSR Implementation Partner India{% endblock %}
 {% block meta_description %}Trusted CSR implementation partner across 20+ Indian states since 2012. Education, healthcare, women empowerment — Section 8 nonprofit aligned to Schedule VII.{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Third Planet Foundation",
+    "url": "{{ site.website }}",
+    "description": "National CSR implementation organisation working across 20+ Indian states since 2012."
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
 <section class="hero">
@@ -37,28 +49,28 @@
             <div class="stat-card">
                 <div class="stat-icon"><i class="fa fa-calendar-check-o"></i></div>
                 <div class="stat-info">
-                    <h3 data-count="14" data-suffix="+">0</h3>
+                    <div class="stat-number" data-count="14" data-suffix="+">0</div>
                     <p>Years of Impact</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fa fa-briefcase"></i></div>
                 <div class="stat-info">
-                    <h3 data-count="500" data-suffix="+">0</h3>
+                    <div class="stat-number" data-count="500" data-suffix="+">0</div>
                     <p>Projects Delivered</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fa fa-map"></i></div>
                 <div class="stat-info">
-                    <h3 data-count="20" data-suffix="+">0</h3>
+                    <div class="stat-number" data-count="20" data-suffix="+">0</div>
                     <p>States Covered</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fa fa-building"></i></div>
                 <div class="stat-info">
-                    <h3 data-count="25" data-suffix="+">0</h3>
+                    <div class="stat-number" data-count="25" data-suffix="+">0</div>
                     <p>Corporate Partners</p>
                 </div>
             </div>
@@ -79,7 +91,7 @@
                 <div class="about-preview-img">
                     <img src="{{ images.about }}" alt="Third Planet Foundation at work" loading="lazy">
                     <div class="experience-badge">
-                        <h3>14+</h3>
+                        <div class="stat-number">14+</div>
                         <p>Years of Service</p>
                     </div>
                 </div>
@@ -205,15 +217,15 @@
                 <p>Implementing impactful programmes across 20+ states and union territories through our extensive field network.</p>
                 <div class="presence-banner-stats">
                     <div class="presence-banner-stat">
-                        <h3>20+</h3>
+                        <div class="stat-number">20+</div>
                         <span>States</span>
                     </div>
                     <div class="presence-banner-stat">
-                        <h3>500+</h3>
+                        <div class="stat-number">500+</div>
                         <span>Projects</span>
                     </div>
                     <div class="presence-banner-stat">
-                        <h3>1M+</h3>
+                        <div class="stat-number">1M+</div>
                         <span>Lives</span>
                     </div>
                 </div>

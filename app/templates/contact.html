@@ -13,6 +13,29 @@
 </nav>
 {% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Third Planet Foundation",
+    "image": "{{ site.website }}/static/img/logo.png",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Centrum Mall, Office No.2, 1st Floor, Sultanpur, MG Road",
+        "addressLocality": "New Delhi",
+        "addressRegion": "Delhi",
+        "postalCode": "110030",
+        "addressCountry": "IN"
+    },
+    "telephone": "+91-11-4168-5208",
+    "email": "info@3planet.org",
+    "url": "{{ site.website }}",
+    "openingHours": "Mo-Fr 09:30-18:30, Sa 10:00-14:00"
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="page-hero" style="background-image: url('/static/img/stock/water.jpg');">
     <div class="hero-pattern"></div>
@@ -102,11 +125,11 @@
                     <div>
                         <h4>Follow Us</h4>
                         <div style="display: flex; gap: 10px; margin-top: 8px;">
-                            <a href="{{ site.linkedin }}" target="_blank" class="contact-social-link"><i class="fa fa-linkedin"></i></a>
-                            <a href="{{ site.instagram }}" target="_blank" class="contact-social-link"><i class="fa fa-instagram"></i></a>
-                            <a href="{{ site.facebook }}" target="_blank" class="contact-social-link"><i class="fa fa-facebook"></i></a>
-                            <a href="{{ site.medium }}" target="_blank" class="contact-social-link"><i class="fa fa-medium"></i></a>
-                            <a href="{{ site.twitter }}" target="_blank" class="contact-social-link"><i class="fa fa-twitter"></i></a>
+                            <a href="{{ site.linkedin }}" target="_blank" rel="noopener" class="contact-social-link"><i class="fa fa-linkedin"></i></a>
+                            <a href="{{ site.instagram }}" target="_blank" rel="noopener" class="contact-social-link"><i class="fa fa-instagram"></i></a>
+                            <a href="{{ site.facebook }}" target="_blank" rel="noopener" class="contact-social-link"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ site.medium }}" target="_blank" rel="noopener" class="contact-social-link"><i class="fa fa-medium"></i></a>
+                            <a href="{{ site.twitter }}" target="_blank" rel="noopener" class="contact-social-link"><i class="fa fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
